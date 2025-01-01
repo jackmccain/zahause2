@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications - The Zuhause Project</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+    <nav class="bg-indigo-600 text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex justify-between h-16 items-center">
+            <!-- Logo -->
+            <div class="flex gap-2">
+             
+              <a href="/">
+
+                <img class="h-11" src="static/assets/img/whitelogo.png" alt="The Zuhause Project">
+              </a>
+              <div>
+      
+              </div>
+             
+      
+                  </div>
+            <!-- Links -->
+            <div class="hidden md:flex space-x-6 font-semibold text-pretty ">
+              <a href="/" class="hover:text-gray-200">Home</a>
+              <a href="/impact" class="hover:text-gray-200">Analytics</a>
+              <a href="/history" class="hover:text-gray-200">History</a>
+              <a href="/#blog" class="hover:text-gray-200">Blog</a>
+              <a href="/research" class="hover:text-gray-200">Economic Research</a>
+              <a href="/publications" class="hover:text-gray-200">Publications & Work</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <div class="-mr-2 flex md:hidden">
+              <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-gray-200 focus:outline-none">
+                <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                  <path class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <header class="text-black mt-10 flex gap-2">
+            <img class="h-11" src="https://cdn-icons-png.flaticon.com/512/3740/3740762.png"
+                alt="The Zuhause Project">
+            <h1 id="title" class="text-2xl mt-2 font-bold">The Zuhause Project</h1>
+        </header>
+
+        <!-- Subtitle -->
+        <h1 class="mt-10 text-pretty text-4xl font-semibold tracking-tight text-gray-900 mb-6">
+            Explore our curated publications on housing and social inequality.
+        </h1>
+
+        <!-- Publications Section -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10">
+            {% for pub in publications %}
+            <div class="bg-white shadow-md rounded-lg p-5">
+                <h2 class="text-xl font-semibold text-blue-800">{{ pub.title }}</h2>
+                <p class="text-sm text-gray-500 mt-1">Published: {{ pub.date }}</p>
+                <p class="text-sm text-gray-500">Source: {{ pub.source }}</p>
+                <p class="text-sm text-gray-500">Author: {{ pub.author }}</p>
+                <a href="{{ pub.link }}" class="mt-4 inline-block text-indigo-600 hover:text-indigo-800 font-semibold text-sm">Read more</a>
+            </div>
+            {% endfor %}
+        </div>
+            <!-- Add more publication cards here -->
+        </div>
+    </div>
+</body>
+</html>

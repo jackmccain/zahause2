@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Housing Analysis</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="container mx-auto p-5">
+        <h1 class="text-3xl font-bold mb-5">Housing Issues by Legal Basis</h1>
+        <canvas id="housingChart" width="400" height="200"></canvas>
+    </div>
+
+    <script>
+        fetch('/api/housing_data')
+            .then(response => response.json())
+            .then(data => {
+                const labels = data.map(item => item.Legal_basis);
+                const noiseData = data.map(item => item.Noise_in_percent);
+                const overcrowdingData = data.map(item => item.Overcrowding_in_percent);
+
+                const ctx = document.getElementById('housingChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: 'Noise (%)',
+                                data: noiseData,
+                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                borderColor: 'rgba(75, 192, 192, 1)',
+                                borderWidth: 1
+                            },
+                            {
+                                label: 'Overcrowding (%)',
+                                data: overcrowdingData,
+                                backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                                borderColor: 'rgba(153, 102, 255, 1)',
+                                borderWidth: 1
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                        }
+                    }
+                });
+            });
+    </script>
+</body>
+</html>

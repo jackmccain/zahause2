@@ -1,0 +1,65 @@
+[
+    {
+        "Legal_basis": "All Persons",
+        "TOTAL_in_1000": 8981,
+        "Noise_in_percent": 20,
+        "Leaking_roofs_damp_walls_rot_in_percent": 11,
+        "Crime_Vandalism_in_percent": 7,
+        "Pollution_grime_environmental_problems_in_percent": 8,
+        "Overcrowding_in_percent": 7
+    },
+    {
+        "Legal_basis": "House ownership",
+        "TOTAL_in_1000": 3714,
+        "Noise_in_percent": 15,
+        "Leaking_roofs_damp_walls_rot_in_percent": 5,
+        "Crime_Vandalism_in_percent": 3,
+        "Pollution_grime_environmental_problems_in_percent": 7,
+        "Overcrowding_in_percent": 1
+    },
+    {
+        "Legal_basis": "Flat ownership",
+        "TOTAL_in_1000": 1159,
+        "Noise_in_percent": 20,
+        "Leaking_roofs_damp_walls_rot_in_percent": 7,
+        "Crime_Vandalism_in_percent": 8,
+        "Pollution_grime_environmental_problems_in_percent": 7,
+        "Overcrowding_in_percent": 4
+    },
+    {
+        "Legal_basis": "Communal housing",
+        "TOTAL_in_1000": 625,
+        "Noise_in_percent": 29,
+        "Leaking_roofs_damp_walls_rot_in_percent": 26,
+        "Crime_Vandalism_in_percent": 18,
+        "Pollution_grime_environmental_problems_in_percent": 14,
+        "Overcrowding_in_percent": 22
+    },
+    {
+        "Legal_basis": "Cooperative housing",
+        "TOTAL_in_1000": 1306,
+        "Noise_in_percent": 22,
+        "Leaking_roofs_damp_walls_rot_in_percent": 14,
+        "Crime_Vandalism_in_percent": 13,
+        "Pollution_grime_environmental_problems_in_percent": 9,
+        "Overcrowding_in_percent": 10
+    },
+    {
+        "Legal_basis": "Other main tenants",
+        "TOTAL_in_1000": 1527,
+        "Noise_in_percent": 26,
+        "Leaking_roofs_damp_walls_rot_in_percent": 16,
+        "Crime_Vandalism_in_percent": 8,
+        "Pollution_grime_environmental_problems_in_percent": 8,
+        "Overcrowding_in_percent": 16
+    },
+    {
+        "Legal_basis": "Others",
+        "TOTAL_in_1000": 649,
+        "Noise_in_percent": 20,
+        "Leaking_roofs_damp_walls_rot_in_percent": 11,
+        "Crime_Vandalism_in_percent": 4,
+        "Pollution_grime_environmental_problems_in_percent": 10,
+        "Overcrowding_in_percent": 8
+    }
+]

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vienna's Housing History</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+  <nav class="bg-indigo-600 text-white shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        <!-- Logo -->
+        <div class="flex gap-2">
+         
+          <a href="/">
+  
+            <img class="h-11" src="static/assets/img/whitelogo.png" alt="The Zuhause Project">
+          </a>
+          <div>
+  
+          </div>
+         
+  
+              </div>
+        <!-- Links -->
+        <div class="hidden md:flex space-x-6 font-semibold text-pretty ">
+          <a href="/" class="hover:text-gray-200">Home</a>
+          <a href="/impact" class="hover:text-gray-200">Analytics</a>
+          <a href="/history" class="hover:text-gray-200">History</a>
+          <a href="/#blog" class="hover:text-gray-200">Blog</a>
+          <a href="/research" class="hover:text-gray-200">Economic Research</a>
+          <a href="/publications" class="hover:text-gray-200">Publications & Work</a>
+        </div>
+        <!-- Mobile Menu Button -->
+        <div class="-mr-2 flex md:hidden">
+          <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-gray-200 focus:outline-none">
+            <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+              <path class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-black mt-10 flex gap-2">
+            <img class="h-11" src="https://cdn-icons-png.flaticon.com/512/3740/3740762.png"
+              alt="The Zuhause Project">
+            <h1 id="title" class="text-2xl mt-2 font-bold">The Zuhause Project</h1>
+          </header>
+          <div class="mt-4">
+    
+    
+          </div>
+          <h1 class="mt-10 text-pretty text-4xl font-semibold tracking-tight text-gray-900 mb-6">
+            A 100-year timeline of social housing in Vienna, courtesy of historians of the City of Vienna.</h1>
+               <a href="https://socialhousing.wien/" class="text-xl text-blue-700 font-semibold"> See more <span aria-hidden="true">→</span></a> 
+               <div class="mt-10">
+                <a class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                href="#timeline">Go to the timeline!</a>
+               </div>
+              
+
+
+                <div class="flex gap-x-6">
+                  
+                    <div class="flex-1">
+                        <h1 class="mt-10 text-pretty text-4xl font-semibold tracking-tight text-gray-900 mb-6">
+                            The “Red Vienna” Housing Model</h1>
+                            <p>
+                                In parallel with municipal housing construction by the City of Vienna, the non-municipal construction sector driven by non-profit or limited-profit building co-operatives and associations contributed significantly to post-1945 housing production overall. Between 1956 and 1965, these housing developers erected approx. 25 percent of all new dwellings in Vienna.
+                        </p><br>
+                        <p>
+                            In 1973, the number of flats completed by limited- and non-profit housing developers for the first time exceeded that of new municipal flats. The (formerly) last completed municipal complex in Rösslergasse 15 (23rd municipal district) dated back to 2004. Due to the high demand for particularly inexpensive housing, the City of Vienna decided in 2015 to build another 4,000 municipal flats. For this reason, more than 4,000 new municipal flats are currently being constructed on city-owned plots in 13 districts.
+                        
+                        </p><br>
+                        <p>
+                            Although many new housing policy approaches were developed and implemented over the decades, the key principles adopted by “Red Vienna” during the First Republic still hold true: affordability, high quality, social cohesion and a good social mix.
+                        
+                        </p>
+                      </div>
+                      <div class="flex-1">
+                        <img src="static/assets/img/redvienna.jpg" alt="Red Vienna 1" class="mt-24 w-full h-auto rounded-lg">
+                        <img src="static/assets/img/construction.jpg" alt="Construction" class="mt-12 w-full h-auto rounded-lg">
+                    </div>
+
+                </div>
+                
+             
+             
+                  
+              </div>
+
+             
+    </div>  
+   <div class="max-w-4xl mt-12 mx-auto">
+    <h1 id="timeline" class="mt-10 text-pretty text-4xl font-semibold tracking-tight text-gray-900 mb-6">
+        100 Years of Housing: 1910-2021 Timeline</h1>
+        <a href="https://socialhousing.wien/" class="text-xl text-blue-700 font-semibold"> Source <span aria-hidden="true">→</span></a> 
+
+   </div>
+   
+
+   <div class="relative mx-auto max-w-5xl">
+    <!-- Vertical Line -->
+    <div class="absolute left-1/2 top-0 h-full w-1 bg-blue-500 transform -translate-x-1/2"></div>
+
+    <!-- Timeline Items -->
+    {% if timeline_data %}
+        {% for item in timeline_data %}
+            <div class="mb-8 flex items-center justify-between w-full {% if loop.index % 2 == 0 %}flex-row-reverse{% endif %}">
+                <div class="w-5/12 bg-white p-4 shadow-lg rounded-lg">
+                    <h2 class="text-xl font-semibold mb-2">{{ item.year }}</h2>
+                    <p>{{ item.event }}</p>
+                </div>
+                <div class="z-10 flex items-center justify-center w-16 h-16 bg-blue-500 rounded-full shadow-lg">
+                    <span class="text-white font-bold">{{ item.year }}</span>
+                </div>
+                <div class="w-5/12"></div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No timeline data available.</p>
+    {% endif %}
+</div>
+
+    </div>
+</body>
+</html>
