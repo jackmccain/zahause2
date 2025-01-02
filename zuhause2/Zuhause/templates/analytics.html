@@ -15,979 +15,1095 @@
 <body class="bg-gray-100 text-gray-800">
     <nav class="bg-indigo-600 text-white shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex justify-between h-16 items-center">
-            <!-- Logo -->
-            <div class="flex gap-2">
-             
-              
+            <div class="flex justify-between h-16 items-center">
+                <!-- Logo -->
+                <div class="flex gap-2">
+
+
                     <a href="/">
-          
-                      <img class="h-11" src="static/assets/img/whitelogo.png" alt="The Zuhause Project">
-                        </a>
-              <div>
-         
-              </div>
-             
-      
-                  </div>
-            <!-- Links -->
-            <div class="hidden md:flex space-x-6 font-semibold text-pretty ">
-              <a href="/" class="hover:text-gray-200">Home</a>
-              <a href="/analytics?town=Altstadt-Ost" class="hover:text-gray-200">Analytics</a>
-              <a href="/history" class="hover:text-gray-200">History</a>
-              <a href="/#blog" class="hover:text-gray-200">Blog</a>
-              <a href="/research" class="hover:text-gray-200">Economic Research</a>
-              <a href="/publications" class="hover:text-gray-200">Publications & Work</a>
+
+                        <img class="h-11" src="static/assets/img/whitelogo.png" alt="The Zuhause Project">
+                    </a>
+                    <div>
+
+                    </div>
+
+
+                </div>
+                <!-- Links -->
+                <div class="hidden md:flex space-x-6 font-semibold text-pretty ">
+                    <a href="/" class="hover:text-gray-200">Home</a>
+                    <a href="/analytics?town=Altstadt-Ost" class="hover:text-gray-200">Analytics</a>
+                    <a href="/history" class="hover:text-gray-200">History</a>
+                    <a href="/#blog" class="hover:text-gray-200">Blog</a>
+                    <a href="/research" class="hover:text-gray-200">Economic Research</a>
+                    <a href="/publications" class="hover:text-gray-200">Publications & Work</a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-gray-200 focus:outline-none">
+                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+
+                </div>
             </div>
-            <!-- Mobile Menu Button -->
-            <div class="-mr-2 flex md:hidden">
-              <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-gray-200 focus:outline-none">
-                <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                  <path class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                </svg>
-              </button>
-              
+            <div class="container mx-auto p-5">
+                <select id="town-search" class="w-full px-4 py-2 rounded-lg"></select>
             </div>
-          </div>
-          <div class="container mx-auto p-5">
-            <select id="town-search" class="w-full px-4 py-2 rounded-lg"></select>
-        </div></h1>
+            </h1>
         </div>
-        
-      </nav>
-    
+
+    </nav>
+    <h1 id="title" class="text-md mt-2 max-w-4xl text-right mx-auto">Explore the pages above*</h1>
+
+
     <!-- Main Container -->
     <div class="container mx-auto p-5">
-        
+
         <h1 class="text-3xl font-bold mb-5">
-      
-        
-        <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Town Analytics</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
-</head>
-<body class="bg-gray-100 text-gray-800">
-    
-
-    <script>
-        // Example list of towns (Replace this with an API call if needed)
-        const towns = [
-  { value: "Altstadt-Ost", text: "Altstadt-Ost" },
-  { value: "Stubenviertel", text: "Stubenviertel" },
-  { value: "Opernviertel", text: "Opernviertel" },
-  { value: "Regierungsviertel", text: "Regierungsviertel" },
-  { value: "Börseviertel", text: "Börseviertel" },
-  { value: "Altstadt-West", text: "Altstadt-West" },
-  { value: "Altstadt-Mitte", text: "Altstadt-Mitte" },
-  { value: "Nordbahnhof", text: "Nordbahnhof" },
-  { value: "Am Tabor", text: "Am Tabor" },
-  { value: "Augartenviertel", text: "Augartenviertel" },
-  { value: "Taborstraße", text: "Taborstraße" },
-  { value: "Praterstraße", text: "Praterstraße" },
-  { value: "Oberer Prater", text: "Oberer Prater" },
-  { value: "Ausstellungsstraße", text: "Ausstellungsstraße" },
-  { value: "Unterer Prater", text: "Unterer Prater" },
-  { value: "Praterlände", text: "Praterlände" },
-  { value: "Weißgerber", text: "Weißgerber" },
-  { value: "Landstraße", text: "Landstraße" },
-  { value: "Belvedere-Diplomatenviertel", text: "Belvedere-Diplomatenviertel" },
-  { value: "Fasangasse", text: "Fasangasse" },
-  { value: "Rudolfspital-Rennwegkaserne", text: "Rudolfspital-Rennwegkaserne" },
-  { value: "Erdberg", text: "Erdberg" },
-  { value: "Erdberger Mais-St. Marx", text: "Erdberger Mais-St. Marx" },
-  { value: "Arsenal", text: "Arsenal" },
-  { value: "Ungargasse", text: "Ungargasse" },
-  { value: "Altes Gaswerk", text: "Altes Gaswerk" },
-  { value: "Wildganshof", text: "Wildganshof" },
-  { value: "Technische Hochschule", text: "Technische Hochschule" },
-  { value: "Argentinierstraße", text: "Argentinierstraße" },
-  { value: "Wiedner Hauptstraße", text: "Wiedner Hauptstraße" },
-  { value: "Schaumburgergrund", text: "Schaumburgergrund" },
-  { value: "Margaretenplatz", text: "Margaretenplatz" },
-  { value: "Matzleinsdorf", text: "Matzleinsdorf" },
-  { value: "Siebenbrunnenplatz", text: "Siebenbrunnenplatz" },
-  { value: "Am Hundsturm", text: "Am Hundsturm" },
-  { value: "Laimgrube", text: "Laimgrube" },
-  { value: "Mollardgasse", text: "Mollardgasse" },
-  { value: "Stumpergasse", text: "Stumpergasse" },
-  { value: "St. Ulrich", text: "St. Ulrich" },
-  { value: "Stiftskaserne", text: "Stiftskaserne" },
-  { value: "Apollogasse", text: "Apollogasse" },
-  { value: "Schottenfeld", text: "Schottenfeld" },
-  { value: "Neustiftgasse", text: "Neustiftgasse" },
-  { value: "Laudongasse", text: "Laudongasse" },
-  { value: "Josefstädter Straße", text: "Josefstädter Straße" },
-  { value: "Bennoplatz", text: "Bennoplatz" },
-  { value: "Lichtental-Spittelau", text: "Lichtental-Spittelau" },
-  { value: "Roßau", text: "Roßau" },
-  { value: "Allgemeines Krankenhaus", text: "Allgemeines Krankenhaus" },
-  { value: "Nußdorfer Straße-Volksoper", text: "Nußdorfer Straße-Volksoper" },
-  { value: "Liechtensteinstraße", text: "Liechtensteinstraße" },
-  { value: "Universitätsviertel", text: "Universitätsviertel" },
-  { value: "Südbahnhof", text: "Südbahnhof" },
-  { value: "Gellertplatz", text: "Gellertplatz" },
-  { value: "Hebbelplatz", text: "Hebbelplatz" },
-  { value: "Quellenplatz", text: "Quellenplatz" },
-  { value: "Arthaberplatz", text: "Arthaberplatz" },
-  { value: "Erlachplatz", text: "Erlachplatz" },
-  { value: "Belgradplatz", text: "Belgradplatz" },
-  { value: "Triester Straße", text: "Triester Straße" },
-  { value: "Franz Josef-Spital", text: "Franz Josef-Spital" },
-  { value: "Neerwindenplatz-Raxstraße", text: "Neerwindenplatz-Raxstraße" },
-  { value: "Heuberggstätten", text: "Heuberggstätten" },
-  { value: "Siedlung Wienerfeld", text: "Siedlung Wienerfeld" },
-  { value: "Per Albin Hansson-Nordwest", text: "Per Albin Hansson-Nordwest" },
-  { value: "Laaer Berg", text: "Laaer Berg" },
-  { value: "Goldberg", text: "Goldberg" },
-  { value: "Unterlaa", text: "Unterlaa" },
-  { value: "Oberlaa", text: "Oberlaa" },
-  { value: "Rothneusiedl", text: "Rothneusiedl" },
-  { value: "Per Albin Hansson-Ost", text: "Per Albin Hansson-Ost" },
-  { value: "Wienerberger Ziegelfabrik", text: "Wienerberger Ziegelfabrik" },
-  { value: "Humboldtplatz", text: "Humboldtplatz" },
-  { value: "Eisenstadtplatz", text: "Eisenstadtplatz" },
-  { value: "Gaswerk Simmering", text: "Gaswerk Simmering" },
-  { value: "Alt-Simmering", text: "Alt-Simmering" },
-  { value: "Enkplatz", text: "Enkplatz" },
-  { value: "Geiselberg", text: "Geiselberg" },
-  { value: "Hasenleiten", text: "Hasenleiten" },
-  { value: "Zentralfriedhof", text: "Zentralfriedhof" },
-  { value: "Obere Simmeringer Haide", text: "Obere Simmeringer Haide" },
-  { value: "Untere Simmeringer Haide", text: "Untere Simmeringer Haide" },
-  { value: "Leberberg", text: "Leberberg" },
-  { value: "Kaiser-Ebersdorf", text: "Kaiser-Ebersdorf" },
-  { value: "Albern", text: "Albern" },
-  { value: "Simmeringer Bad", text: "Simmeringer Bad" },
-  { value: "Gaudenzdorf", text: "Gaudenzdorf" },
-  { value: "Fuchsenfeld", text: "Fuchsenfeld" },
-  { value: "Meidlinger Friedhof", text: "Meidlinger Friedhof" },
-  { value: "Wilhelmsdorf", text: "Wilhelmsdorf" },
-  { value: "Meidlinger Hauptstraße", text: "Meidlinger Hauptstraße" },
-  { value: "Tivoligasse", text: "Tivoligasse" },
-  { value: "Gatterhölzl", text: "Gatterhölzl" },
-  { value: "Oswaldgasse", text: "Oswaldgasse" },
-  { value: "Am Schöpfwerk", text: "Am Schöpfwerk" },
-  { value: "Altmannsdorf", text: "Altmannsdorf" },
-  { value: "Hetzendorf", text: "Hetzendorf" },
-  { value: "Schönbrunn", text: "Schönbrunn" },
-  { value: "Hietzing", text: "Hietzing" },
-  { value: "Auhofstraße", text: "Auhofstraße" },
-  { value: "Ober St. Veit", text: "Ober St. Veit" },
-  { value: "Gemeindeberg-Jagdschlossgasse", text: "Gemeindeberg-Jagdschlossgasse" },
-  { value: "Lainz", text: "Lainz" },
-  { value: "Maxing", text: "Maxing" },
-  { value: "Speising", text: "Speising" },
-  { value: "Altersheim Lainz", text: "Altersheim Lainz" },
-  { value: "Lainzer Tiergarten", text: "Lainzer Tiergarten" },
-  { value: "Friedensstadt", text: "Friedensstadt" },
-  { value: "Breitensee", text: "Breitensee" },
-  { value: "An der Windmühle", text: "An der Windmühle" },
-  { value: "Penzing", text: "Penzing" },
-  { value: "Unter-Baumgarten", text: "Unter-Baumgarten" },
-  { value: "Am Ameisbach", text: "Am Ameisbach" },
-  { value: "Ober-Baumgarten", text: "Ober-Baumgarten" },
-  { value: "Hugo Breitner-Hof", text: "Hugo Breitner-Hof" },
-  { value: "Baumgartner Friedhof-Flötzersteig", text: "Baumgartner Friedhof-Flötzersteig" },
-  { value: "Am Steinhof", text: "Am Steinhof" },
-  { value: "Hütteldorf", text: "Hütteldorf" },
-  { value: "Wolfersberg", text: "Wolfersberg" },
-  { value: "Hadersdorf-Weidlingau", text: "Hadersdorf-Weidlingau" },
-  { value: "Stadthalle", text: "Stadthalle" },
-  { value: "Reithofferplatz", text: "Reithofferplatz" },
-  { value: "Fünfhaus-Westbahnhof", text: "Fünfhaus-Westbahnhof" },
-  { value: "Sechshaus", text: "Sechshaus" },
-  { value: "Rudolfsheim-Braunhirschen", text: "Rudolfsheim-Braunhirschen" },
-  { value: "Rauscherplatz", text: "Rauscherplatz" },
-  { value: "Schmelz", text: "Schmelz" },
-  { value: "Neulerchenfeld", text: "Neulerchenfeld" },
-  { value: "Ludo-Hartmann-Platz", text: "Ludo-Hartmann-Platz" },
-  { value: "Herbststraße-Vorortelinie", text: "Herbststraße-Vorortelinie" },
-  { value: "Alt-Ottakring", text: "Alt-Ottakring" },
-  { value: "Wilhelminenstraße", text: "Wilhelminenstraße" },
-  { value: "Sandleiten", text: "Sandleiten" },
-  { value: "Joachimsthaler-Platz", text: "Joachimsthaler-Platz" },
-  { value: "Wilhelminenspital", text: "Wilhelminenspital" },
-  { value: "Wilhelminenberg", text: "Wilhelminenberg" },
-  { value: "Richard Wagner-Platz", text: "Richard Wagner-Platz" },
-  { value: "Dornerplatz", text: "Dornerplatz" },
-  { value: "Alt-Hernals", text: "Alt-Hernals" },
-  { value: "Äußere Hernalser Hauptstraße", text: "Äußere Hernalser Hauptstraße" },
-  { value: "Alszeile", text: "Alszeile" },
-  { value: "Dornbach", text: "Dornbach" },
-  { value: "Neuwaldegg", text: "Neuwaldegg" },
-  { value: "Währinger Cottage", text: "Währinger Cottage" },
-  { value: "Gentzgasse", text: "Gentzgasse" },
-  { value: "Kreutzgasse", text: "Kreutzgasse" },
-  { value: "Gersthof", text: "Gersthof" },
-  { value: "Pötzleinsdorf", text: "Pötzleinsdorf" },
-  { value: "Nußdorf-Kahlenbergerdorf", text: "Nußdorf-Kahlenbergerdorf" },
-  { value: "Karl Marx-Hof", text: "Karl Marx-Hof" },
-  { value: "Döblinger Hauptstraße", text: "Döblinger Hauptstraße" },
-  { value: "Hohe Warte", text: "Hohe Warte" },
-  { value: "Grinzing", text: "Grinzing" },
-  { value: "Sievering", text: "Sievering" },
-  { value: "In der Krim", text: "In der Krim" },
-  { value: "Döblinger Cottage", text: "Döblinger Cottage" },
-  { value: "Glanzing-Salmannsdorf", text: "Glanzing-Salmannsdorf" },
-  { value: "Kapaunplatz", text: "Kapaunplatz" },
-  { value: "Zwischenbrücken", text: "Zwischenbrücken" },
-  { value: "Brigittaplatz", text: "Brigittaplatz" },
-  { value: "Lorenz Müller-Gasse", text: "Lorenz Müller-Gasse" },
-  { value: "Wallensteinstraße", text: "Wallensteinstraße" },
-  { value: "Wexstraße", text: "Wexstraße" },
-  { value: "Höchstädtplatz", text: "Höchstädtplatz" },
-  { value: "Nordwestbahnhof", text: "Nordwestbahnhof" },
-  { value: "Stammersdorf", text: "Stammersdorf" },
-  { value: "Stammersdorf-Brünnerstraße", text: "Stammersdorf-Brünnerstraße" },
-  { value: "Hirschfeld", text: "Hirschfeld" },
-  { value: "Nordrandsiedlung", text: "Nordrandsiedlung" },
-  { value: "Großfeldsiedlung", text: "Großfeldsiedlung" },
-  { value: "Leopoldau", text: "Leopoldau" },
-  { value: "Leopoldau Straße-Siemensstraße", text: "Leopoldau Straße-Siemensstraße" },
-  { value: "Gaswerk Leopoldau", text: "Gaswerk Leopoldau" },
-  { value: "Schotterfeld", text: "Schotterfeld" },
-  { value: "Siedlung Siemensstraße", text: "Siedlung Siemensstraße" },
-  { value: "Groß-Jedlersdorf", text: "Groß-Jedlersdorf" },
-  { value: "Jochbergen", text: "Jochbergen" },
-  { value: "Strebersdorf", text: "Strebersdorf" },
-  { value: "Strebersdorf-Prager Straße", text: "Strebersdorf-Prager Straße" },
-  { value: "Autokader", text: "Autokader" },
-  { value: "Schwarzlackenau", text: "Schwarzlackenau" },
-  { value: "Neu-Jedlesee", text: "Neu-Jedlesee" },
-  { value: "Alt-Jedlesee", text: "Alt-Jedlesee" },
-  { value: "Koloniestraße", text: "Koloniestraße" },
-  { value: "Shuttleworthstraße", text: "Shuttleworthstraße" },
-  { value: "Floridsdorf-Brünnerstraße", text: "Floridsdorf-Brünnerstraße" },
-  { value: "Floridsdorf-am Spitz", text: "Floridsdorf-am Spitz" },
-  { value: "Donaufeld", text: "Donaufeld" },
-  { value: "Donaufeld-Leopoldauer Straße", text: "Donaufeld-Leopoldauer Straße" },
-  { value: "Donaufelder Gärtnergebiet", text: "Donaufelder Gärtnergebiet" },
-  { value: "Mühlschüttel", text: "Mühlschüttel" },
-  { value: "Bruckhaufen", text: "Bruckhaufen" },
-  { value: "Industriegelände-Bahndreieck", text: "Industriegelände-Bahndreieck" },
-  { value: "Süßenbrunn", text: "Süßenbrunn" },
-  { value: "Breitenlee", text: "Breitenlee" },
-  { value: "Neu-Eßling", text: "Neu-Eßling" },
-  { value: "Schafflerhof", text: "Schafflerhof" },
-  { value: "Flugfeld Aspern", text: "Flugfeld Aspern" },
-  { value: "Kriegerheimstätten-Lackenjöchl", text: "Kriegerheimstätten-Lackenjöchl" },
-  { value: "Breitenleer Stadtrandsiedlung", text: "Breitenleer Stadtrandsiedlung" },
-  { value: "Kagran", text: "Kagran" },
-  { value: "Eipeldauer Straße", text: "Eipeldauer Straße" },
-  { value: "An der oberen Alten Donau", text: "An der oberen Alten Donau" },
-  { value: "Kaisermühlen", text: "Kaisermühlen" },
-  { value: "Lettenhaufen", text: "Lettenhaufen" },
-  { value: "Zentrum Kagran", text: "Zentrum Kagran" },
-  { value: "Freihof-Siedlung", text: "Freihof-Siedlung" },
-  { value: "Wohngebiet Neu-Kagran", text: "Wohngebiet Neu-Kagran" },
-  { value: "Industriegebiet Neu-Kagran", text: "Industriegebiet Neu-Kagran" },
-  { value: "Neuhaufen", text: "Neuhaufen" },
-  { value: "Mühlgrund-Neu-Stadlau", text: "Mühlgrund-Neu-Stadlau" },
-  { value: "Stadlau", text: "Stadlau" },
-  { value: "Hirschstetten", text: "Hirschstetten" },
-  { value: "Plankenmais", text: "Plankenmais" },
-  { value: "Neu-Straßenäcker", text: "Neu-Straßenäcker" },
-  { value: "Aspern", text: "Aspern" },
-  { value: "Spargelfeld", text: "Spargelfeld" },
-  { value: "Wulzendorf", text: "Wulzendorf" },
-  { value: "Biberhaufen", text: "Biberhaufen" },
-  { value: "Eßling-Im Neuriß", text: "Eßling-Im Neuriß" },
-  { value: "Eßling", text: "Eßling" },
-  { value: "Englisch Feld", text: "Englisch Feld" },
-  { value: "Industriegelände Erzherzog Karl-Straße", text: "Industriegelände Erzherzog Karl-Straße" },
-  { value: "Donaupark", text: "Donaupark" },
-  { value: "Inzersdorf", text: "Inzersdorf" },
-  { value: "Neu-Erlaa-Neustift", text: "Neu-Erlaa-Neustift" },
-  { value: "Schwarze Haide", text: "Schwarze Haide" },
-  { value: "In der Wiesen", text: "In der Wiesen" },
-  { value: "Siebenhirten", text: "Siebenhirten" },
-  { value: "Industriezentrum Liesing", text: "Industriezentrum Liesing" },
-  { value: "Atzgersdorf", text: "Atzgersdorf" },
-  { value: "Industriegelände Breitenfurter Straße", text: "Industriegelände Breitenfurter Straße" },
-  { value: "Steinberg", text: "Steinberg" },
-  { value: "Zentrum Liesing", text: "Zentrum Liesing" },
-  { value: "Atzgersdorf-West", text: "Atzgersdorf-West" },
-  { value: "Rodaun", text: "Rodaun" },
-  { value: "Mauerberg", text: "Mauerberg" },
-  { value: "Mauer", text: "Mauer" },
-  { value: "Kroißberg", text: "Kroißberg" },
-  { value: "Kalksburg-Kaltenleutgeben", text: "Kalksburg-Kaltenleutgeben" },
-  { value: "Blumental", text: "Blumental" },
-  { value: "Draschegründe", text: "Draschegründe" },
-  { value: "Wohnpark Alt-Erlaa", text: "Wohnpark Alt-Erlaa" }
-];
 
 
-        // Initialize TomSelect
-        new TomSelect("#town-search", {
-            options: towns,
-            placeholder: "Search an area...",
-            maxItems: 1,
-            onChange: (value) => {
-                if (value) {
-                    // Redirect to the analytics page for the selected town
-                    window.location.href = `/analytics?town=${value}`;
-                }
-            },
-        });
-    </script>
+            <!DOCTYPE html>
+            <html lang="en">
+
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Town Analytics</title>
+                <script src="https://cdn.tailwindcss.com"></script>
+                <link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet">
+                <script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
+            </head>
+
+            <body class="bg-gray-100 text-gray-800">
+
+
+                <script>
+                    // Example list of towns (Replace this with an API call if needed)
+                    const towns = [
+                        { value: "Altstadt-Ost", text: "Altstadt-Ost" },
+                        { value: "Stubenviertel", text: "Stubenviertel" },
+                        { value: "Opernviertel", text: "Opernviertel" },
+                        { value: "Regierungsviertel", text: "Regierungsviertel" },
+                        { value: "Börseviertel", text: "Börseviertel" },
+                        { value: "Altstadt-West", text: "Altstadt-West" },
+                        { value: "Altstadt-Mitte", text: "Altstadt-Mitte" },
+                        { value: "Nordbahnhof", text: "Nordbahnhof" },
+                        { value: "Am Tabor", text: "Am Tabor" },
+                        { value: "Augartenviertel", text: "Augartenviertel" },
+                        { value: "Taborstraße", text: "Taborstraße" },
+                        { value: "Praterstraße", text: "Praterstraße" },
+                        { value: "Oberer Prater", text: "Oberer Prater" },
+                        { value: "Ausstellungsstraße", text: "Ausstellungsstraße" },
+                        { value: "Unterer Prater", text: "Unterer Prater" },
+                        { value: "Praterlände", text: "Praterlände" },
+                        { value: "Weißgerber", text: "Weißgerber" },
+                        { value: "Landstraße", text: "Landstraße" },
+                        { value: "Belvedere-Diplomatenviertel", text: "Belvedere-Diplomatenviertel" },
+                        { value: "Fasangasse", text: "Fasangasse" },
+                        { value: "Rudolfspital-Rennwegkaserne", text: "Rudolfspital-Rennwegkaserne" },
+                        { value: "Erdberg", text: "Erdberg" },
+                        { value: "Erdberger Mais-St. Marx", text: "Erdberger Mais-St. Marx" },
+                        { value: "Arsenal", text: "Arsenal" },
+                        { value: "Ungargasse", text: "Ungargasse" },
+                        { value: "Altes Gaswerk", text: "Altes Gaswerk" },
+                        { value: "Wildganshof", text: "Wildganshof" },
+                        { value: "Technische Hochschule", text: "Technische Hochschule" },
+                        { value: "Argentinierstraße", text: "Argentinierstraße" },
+                        { value: "Wiedner Hauptstraße", text: "Wiedner Hauptstraße" },
+                        { value: "Schaumburgergrund", text: "Schaumburgergrund" },
+                        { value: "Margaretenplatz", text: "Margaretenplatz" },
+                        { value: "Matzleinsdorf", text: "Matzleinsdorf" },
+                        { value: "Siebenbrunnenplatz", text: "Siebenbrunnenplatz" },
+                        { value: "Am Hundsturm", text: "Am Hundsturm" },
+                        { value: "Laimgrube", text: "Laimgrube" },
+                        { value: "Mollardgasse", text: "Mollardgasse" },
+                        { value: "Stumpergasse", text: "Stumpergasse" },
+                        { value: "St. Ulrich", text: "St. Ulrich" },
+                        { value: "Stiftskaserne", text: "Stiftskaserne" },
+                        { value: "Apollogasse", text: "Apollogasse" },
+                        { value: "Schottenfeld", text: "Schottenfeld" },
+                        { value: "Neustiftgasse", text: "Neustiftgasse" },
+                        { value: "Laudongasse", text: "Laudongasse" },
+                        { value: "Josefstädter Straße", text: "Josefstädter Straße" },
+                        { value: "Bennoplatz", text: "Bennoplatz" },
+                        { value: "Lichtental-Spittelau", text: "Lichtental-Spittelau" },
+                        { value: "Roßau", text: "Roßau" },
+                        { value: "Allgemeines Krankenhaus", text: "Allgemeines Krankenhaus" },
+                        { value: "Nußdorfer Straße-Volksoper", text: "Nußdorfer Straße-Volksoper" },
+                        { value: "Liechtensteinstraße", text: "Liechtensteinstraße" },
+                        { value: "Universitätsviertel", text: "Universitätsviertel" },
+                        { value: "Südbahnhof", text: "Südbahnhof" },
+                        { value: "Gellertplatz", text: "Gellertplatz" },
+                        { value: "Hebbelplatz", text: "Hebbelplatz" },
+                        { value: "Quellenplatz", text: "Quellenplatz" },
+                        { value: "Arthaberplatz", text: "Arthaberplatz" },
+                        { value: "Erlachplatz", text: "Erlachplatz" },
+                        { value: "Belgradplatz", text: "Belgradplatz" },
+                        { value: "Triester Straße", text: "Triester Straße" },
+                        { value: "Franz Josef-Spital", text: "Franz Josef-Spital" },
+                        { value: "Neerwindenplatz-Raxstraße", text: "Neerwindenplatz-Raxstraße" },
+                        { value: "Heuberggstätten", text: "Heuberggstätten" },
+                        { value: "Siedlung Wienerfeld", text: "Siedlung Wienerfeld" },
+                        { value: "Per Albin Hansson-Nordwest", text: "Per Albin Hansson-Nordwest" },
+                        { value: "Laaer Berg", text: "Laaer Berg" },
+                        { value: "Goldberg", text: "Goldberg" },
+                        { value: "Unterlaa", text: "Unterlaa" },
+                        { value: "Oberlaa", text: "Oberlaa" },
+                        { value: "Rothneusiedl", text: "Rothneusiedl" },
+                        { value: "Per Albin Hansson-Ost", text: "Per Albin Hansson-Ost" },
+                        { value: "Wienerberger Ziegelfabrik", text: "Wienerberger Ziegelfabrik" },
+                        { value: "Humboldtplatz", text: "Humboldtplatz" },
+                        { value: "Eisenstadtplatz", text: "Eisenstadtplatz" },
+                        { value: "Gaswerk Simmering", text: "Gaswerk Simmering" },
+                        { value: "Alt-Simmering", text: "Alt-Simmering" },
+                        { value: "Enkplatz", text: "Enkplatz" },
+                        { value: "Geiselberg", text: "Geiselberg" },
+                        { value: "Hasenleiten", text: "Hasenleiten" },
+                        { value: "Zentralfriedhof", text: "Zentralfriedhof" },
+                        { value: "Obere Simmeringer Haide", text: "Obere Simmeringer Haide" },
+                        { value: "Untere Simmeringer Haide", text: "Untere Simmeringer Haide" },
+                        { value: "Leberberg", text: "Leberberg" },
+                        { value: "Kaiser-Ebersdorf", text: "Kaiser-Ebersdorf" },
+                        { value: "Albern", text: "Albern" },
+                        { value: "Simmeringer Bad", text: "Simmeringer Bad" },
+                        { value: "Gaudenzdorf", text: "Gaudenzdorf" },
+                        { value: "Fuchsenfeld", text: "Fuchsenfeld" },
+                        { value: "Meidlinger Friedhof", text: "Meidlinger Friedhof" },
+                        { value: "Wilhelmsdorf", text: "Wilhelmsdorf" },
+                        { value: "Meidlinger Hauptstraße", text: "Meidlinger Hauptstraße" },
+                        { value: "Tivoligasse", text: "Tivoligasse" },
+                        { value: "Gatterhölzl", text: "Gatterhölzl" },
+                        { value: "Oswaldgasse", text: "Oswaldgasse" },
+                        { value: "Am Schöpfwerk", text: "Am Schöpfwerk" },
+                        { value: "Altmannsdorf", text: "Altmannsdorf" },
+                        { value: "Hetzendorf", text: "Hetzendorf" },
+                        { value: "Schönbrunn", text: "Schönbrunn" },
+                        { value: "Hietzing", text: "Hietzing" },
+                        { value: "Auhofstraße", text: "Auhofstraße" },
+                        { value: "Ober St. Veit", text: "Ober St. Veit" },
+                        { value: "Gemeindeberg-Jagdschlossgasse", text: "Gemeindeberg-Jagdschlossgasse" },
+                        { value: "Lainz", text: "Lainz" },
+                        { value: "Maxing", text: "Maxing" },
+                        { value: "Speising", text: "Speising" },
+                        { value: "Altersheim Lainz", text: "Altersheim Lainz" },
+                        { value: "Lainzer Tiergarten", text: "Lainzer Tiergarten" },
+                        { value: "Friedensstadt", text: "Friedensstadt" },
+                        { value: "Breitensee", text: "Breitensee" },
+                        { value: "An der Windmühle", text: "An der Windmühle" },
+                        { value: "Penzing", text: "Penzing" },
+                        { value: "Unter-Baumgarten", text: "Unter-Baumgarten" },
+                        { value: "Am Ameisbach", text: "Am Ameisbach" },
+                        { value: "Ober-Baumgarten", text: "Ober-Baumgarten" },
+                        { value: "Hugo Breitner-Hof", text: "Hugo Breitner-Hof" },
+                        { value: "Baumgartner Friedhof-Flötzersteig", text: "Baumgartner Friedhof-Flötzersteig" },
+                        { value: "Am Steinhof", text: "Am Steinhof" },
+                        { value: "Hütteldorf", text: "Hütteldorf" },
+                        { value: "Wolfersberg", text: "Wolfersberg" },
+                        { value: "Hadersdorf-Weidlingau", text: "Hadersdorf-Weidlingau" },
+                        { value: "Stadthalle", text: "Stadthalle" },
+                        { value: "Reithofferplatz", text: "Reithofferplatz" },
+                        { value: "Fünfhaus-Westbahnhof", text: "Fünfhaus-Westbahnhof" },
+                        { value: "Sechshaus", text: "Sechshaus" },
+                        { value: "Rudolfsheim-Braunhirschen", text: "Rudolfsheim-Braunhirschen" },
+                        { value: "Rauscherplatz", text: "Rauscherplatz" },
+                        { value: "Schmelz", text: "Schmelz" },
+                        { value: "Neulerchenfeld", text: "Neulerchenfeld" },
+                        { value: "Ludo-Hartmann-Platz", text: "Ludo-Hartmann-Platz" },
+                        { value: "Herbststraße-Vorortelinie", text: "Herbststraße-Vorortelinie" },
+                        { value: "Alt-Ottakring", text: "Alt-Ottakring" },
+                        { value: "Wilhelminenstraße", text: "Wilhelminenstraße" },
+                        { value: "Sandleiten", text: "Sandleiten" },
+                        { value: "Joachimsthaler-Platz", text: "Joachimsthaler-Platz" },
+                        { value: "Wilhelminenspital", text: "Wilhelminenspital" },
+                        { value: "Wilhelminenberg", text: "Wilhelminenberg" },
+                        { value: "Richard Wagner-Platz", text: "Richard Wagner-Platz" },
+                        { value: "Dornerplatz", text: "Dornerplatz" },
+                        { value: "Alt-Hernals", text: "Alt-Hernals" },
+                        { value: "Äußere Hernalser Hauptstraße", text: "Äußere Hernalser Hauptstraße" },
+                        { value: "Alszeile", text: "Alszeile" },
+                        { value: "Dornbach", text: "Dornbach" },
+                        { value: "Neuwaldegg", text: "Neuwaldegg" },
+                        { value: "Währinger Cottage", text: "Währinger Cottage" },
+                        { value: "Gentzgasse", text: "Gentzgasse" },
+                        { value: "Kreutzgasse", text: "Kreutzgasse" },
+                        { value: "Gersthof", text: "Gersthof" },
+                        { value: "Pötzleinsdorf", text: "Pötzleinsdorf" },
+                        { value: "Nußdorf-Kahlenbergerdorf", text: "Nußdorf-Kahlenbergerdorf" },
+                        { value: "Karl Marx-Hof", text: "Karl Marx-Hof" },
+                        { value: "Döblinger Hauptstraße", text: "Döblinger Hauptstraße" },
+                        { value: "Hohe Warte", text: "Hohe Warte" },
+                        { value: "Grinzing", text: "Grinzing" },
+                        { value: "Sievering", text: "Sievering" },
+                        { value: "In der Krim", text: "In der Krim" },
+                        { value: "Döblinger Cottage", text: "Döblinger Cottage" },
+                        { value: "Glanzing-Salmannsdorf", text: "Glanzing-Salmannsdorf" },
+                        { value: "Kapaunplatz", text: "Kapaunplatz" },
+                        { value: "Zwischenbrücken", text: "Zwischenbrücken" },
+                        { value: "Brigittaplatz", text: "Brigittaplatz" },
+                        { value: "Lorenz Müller-Gasse", text: "Lorenz Müller-Gasse" },
+                        { value: "Wallensteinstraße", text: "Wallensteinstraße" },
+                        { value: "Wexstraße", text: "Wexstraße" },
+                        { value: "Höchstädtplatz", text: "Höchstädtplatz" },
+                        { value: "Nordwestbahnhof", text: "Nordwestbahnhof" },
+                        { value: "Stammersdorf", text: "Stammersdorf" },
+                        { value: "Stammersdorf-Brünnerstraße", text: "Stammersdorf-Brünnerstraße" },
+                        { value: "Hirschfeld", text: "Hirschfeld" },
+                        { value: "Nordrandsiedlung", text: "Nordrandsiedlung" },
+                        { value: "Großfeldsiedlung", text: "Großfeldsiedlung" },
+                        { value: "Leopoldau", text: "Leopoldau" },
+                        { value: "Leopoldau Straße-Siemensstraße", text: "Leopoldau Straße-Siemensstraße" },
+                        { value: "Gaswerk Leopoldau", text: "Gaswerk Leopoldau" },
+                        { value: "Schotterfeld", text: "Schotterfeld" },
+                        { value: "Siedlung Siemensstraße", text: "Siedlung Siemensstraße" },
+                        { value: "Groß-Jedlersdorf", text: "Groß-Jedlersdorf" },
+                        { value: "Jochbergen", text: "Jochbergen" },
+                        { value: "Strebersdorf", text: "Strebersdorf" },
+                        { value: "Strebersdorf-Prager Straße", text: "Strebersdorf-Prager Straße" },
+                        { value: "Autokader", text: "Autokader" },
+                        { value: "Schwarzlackenau", text: "Schwarzlackenau" },
+                        { value: "Neu-Jedlesee", text: "Neu-Jedlesee" },
+                        { value: "Alt-Jedlesee", text: "Alt-Jedlesee" },
+                        { value: "Koloniestraße", text: "Koloniestraße" },
+                        { value: "Shuttleworthstraße", text: "Shuttleworthstraße" },
+                        { value: "Floridsdorf-Brünnerstraße", text: "Floridsdorf-Brünnerstraße" },
+                        { value: "Floridsdorf-am Spitz", text: "Floridsdorf-am Spitz" },
+                        { value: "Donaufeld", text: "Donaufeld" },
+                        { value: "Donaufeld-Leopoldauer Straße", text: "Donaufeld-Leopoldauer Straße" },
+                        { value: "Donaufelder Gärtnergebiet", text: "Donaufelder Gärtnergebiet" },
+                        { value: "Mühlschüttel", text: "Mühlschüttel" },
+                        { value: "Bruckhaufen", text: "Bruckhaufen" },
+                        { value: "Industriegelände-Bahndreieck", text: "Industriegelände-Bahndreieck" },
+                        { value: "Süßenbrunn", text: "Süßenbrunn" },
+                        { value: "Breitenlee", text: "Breitenlee" },
+                        { value: "Neu-Eßling", text: "Neu-Eßling" },
+                        { value: "Schafflerhof", text: "Schafflerhof" },
+                        { value: "Flugfeld Aspern", text: "Flugfeld Aspern" },
+                        { value: "Kriegerheimstätten-Lackenjöchl", text: "Kriegerheimstätten-Lackenjöchl" },
+                        { value: "Breitenleer Stadtrandsiedlung", text: "Breitenleer Stadtrandsiedlung" },
+                        { value: "Kagran", text: "Kagran" },
+                        { value: "Eipeldauer Straße", text: "Eipeldauer Straße" },
+                        { value: "An der oberen Alten Donau", text: "An der oberen Alten Donau" },
+                        { value: "Kaisermühlen", text: "Kaisermühlen" },
+                        { value: "Lettenhaufen", text: "Lettenhaufen" },
+                        { value: "Zentrum Kagran", text: "Zentrum Kagran" },
+                        { value: "Freihof-Siedlung", text: "Freihof-Siedlung" },
+                        { value: "Wohngebiet Neu-Kagran", text: "Wohngebiet Neu-Kagran" },
+                        { value: "Industriegebiet Neu-Kagran", text: "Industriegebiet Neu-Kagran" },
+                        { value: "Neuhaufen", text: "Neuhaufen" },
+                        { value: "Mühlgrund-Neu-Stadlau", text: "Mühlgrund-Neu-Stadlau" },
+                        { value: "Stadlau", text: "Stadlau" },
+                        { value: "Hirschstetten", text: "Hirschstetten" },
+                        { value: "Plankenmais", text: "Plankenmais" },
+                        { value: "Neu-Straßenäcker", text: "Neu-Straßenäcker" },
+                        { value: "Aspern", text: "Aspern" },
+                        { value: "Spargelfeld", text: "Spargelfeld" },
+                        { value: "Wulzendorf", text: "Wulzendorf" },
+                        { value: "Biberhaufen", text: "Biberhaufen" },
+                        { value: "Eßling-Im Neuriß", text: "Eßling-Im Neuriß" },
+                        { value: "Eßling", text: "Eßling" },
+                        { value: "Englisch Feld", text: "Englisch Feld" },
+                        { value: "Industriegelände Erzherzog Karl-Straße", text: "Industriegelände Erzherzog Karl-Straße" },
+                        { value: "Donaupark", text: "Donaupark" },
+                        { value: "Inzersdorf", text: "Inzersdorf" },
+                        { value: "Neu-Erlaa-Neustift", text: "Neu-Erlaa-Neustift" },
+                        { value: "Schwarze Haide", text: "Schwarze Haide" },
+                        { value: "In der Wiesen", text: "In der Wiesen" },
+                        { value: "Siebenhirten", text: "Siebenhirten" },
+                        { value: "Industriezentrum Liesing", text: "Industriezentrum Liesing" },
+                        { value: "Atzgersdorf", text: "Atzgersdorf" },
+                        { value: "Industriegelände Breitenfurter Straße", text: "Industriegelände Breitenfurter Straße" },
+                        { value: "Steinberg", text: "Steinberg" },
+                        { value: "Zentrum Liesing", text: "Zentrum Liesing" },
+                        { value: "Atzgersdorf-West", text: "Atzgersdorf-West" },
+                        { value: "Rodaun", text: "Rodaun" },
+                        { value: "Mauerberg", text: "Mauerberg" },
+                        { value: "Mauer", text: "Mauer" },
+                        { value: "Kroißberg", text: "Kroißberg" },
+                        { value: "Kalksburg-Kaltenleutgeben", text: "Kalksburg-Kaltenleutgeben" },
+                        { value: "Blumental", text: "Blumental" },
+                        { value: "Draschegründe", text: "Draschegründe" },
+                        { value: "Wohnpark Alt-Erlaa", text: "Wohnpark Alt-Erlaa" }
+                    ];
+
+
+                    // Initialize TomSelect
+                    new TomSelect("#town-search", {
+                        options: towns,
+                        placeholder: "Search an area...",
+                        maxItems: 1,
+                        onChange: (value) => {
+                            if (value) {
+                                // Redirect to the analytics page for the selected town
+                                window.location.href = `/analytics?town=${value}`;
+                            }
+                        },
+                    });
+                </script>
 
 
 
-        <!-- Hidden Data from Python -->
-        <p class="hidden" id="town_data"> {{ town_data }} </p>
-        <p class="hidden" id="town_name"> {{ town_name }} </p>
-        <h1 class="text-center text-4xl font-bold mb-8"> {{ town_name }} </h1>
-        
-        <!-- 1) Raw Data Table in a Details Dropdown -->
-        
+                <!-- Hidden Data from Python -->
+                <p class="hidden" id="town_data"> {{ town_data }} </p>
+                <p class="hidden" id="town_name"> {{ town_name }} </p>
+                <h1 class="text-center text-4xl font-bold mb-8"> {{ town_name }} </h1>
 
-        <!-- 2) Dual Charts (Pie Chart & Line Chart), side by side & same size -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 bg-white rounded-lg shadow p-4">
-            <!-- (A) Pie Chart -->
-            <div class="bg-gray-50 rounded-lg shadow-lg p-6 flex flex-col justify-between">
-                <label for="yearSelect" class="block mb-0 font-semibold text-center">Nationalities in {{town_name}}</label>
-                <select id="yearSelect" class="border p-2 rounded mb-4 mx-auto w-1/2" >
-                    <!-- Adjusted width of the dropdown -->
-                    <option value="1971">1971</option>
-                    <option value="1981">1981</option>
-                    <option value="1991">1991</option>
-                    <option value="2001">2001</option>
-                    <option value="2011">2011</option>
-                </select>
-                <div class="w-full h-80 flex justify-center items-center">
-                    <!-- Increased height for the pie chart -->
-                    <canvas id="nationalitiesChart" class="w-full h-full"></canvas>
-                </div>
-                <p class="text-xs text-gray-500 mt-4 text-center">
-                    This pie chart represents the distribution of nationalities across the population.
-                </p>
-            </div>
-        
-            <!-- (B) Line Chart -->
-            <div class="bg-gray-50 rounded-lg shadow-lg p-6 flex flex-col justify-between">
-                <h2 class="font-semibold text-lg mb-0 text-center">Austrian Share of Population (1971–2011)</h2>
-                <div class="w-full h-64 flex justify-center items-center">
-                    <!-- Standard size for the line chart -->
-                    <canvas id="austrianLineChart" class="w-full h-full"></canvas>
-                </div>
-                <p class="text-xs text-gray-500 mt-4 text-center">
-                    This chart visualizes the proportion of Austrian-born individuals relative to other groups.
-                </p>
-            </div>
-        </div><!-- Container for Heatmaps -->
-        <div class="bg-white shadow rounded p-4 mb-8">
-            <div class="flex justify-between items-center">
-              <!-- Heatmaps Section -->
-              <h2 class="text-xl font-bold">Heatmap of Diversity Ratings ({{ town_name }})</h2>
-          
-              <!-- Legend Section -->
-              <div class="relative inline-block group">
-                <!-- The button itself -->
-                <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                  Legend
-                </button>
-          
-                <!-- The hidden legend content, revealed on hover -->
-                <div 
-                  class="absolute right-0 top-full mt-2 w-96 bg-white border border-gray-200 p-4 rounded shadow-md 
-                         invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300 z-10"
-                >
-                  <!-- Host Section -->
-                  <div>
-                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Host</h2>
-                    <div class="space-y-2">
-                      <div class="flex items-center space-x-4">
-                        <div class="w-8 h-8 flex items-center justify-center bg-amber-700 text-white font-semibold rounded">1</div>
-                        <span class="text-gray-700">Dominant</span>
-                      </div>
-                      <div class="flex items-center space-x-4">
-                        <div class="w-8 h-8 flex items-center justify-center bg-amber-500 text-white font-semibold rounded">2</div>
-                        <span class="text-gray-700">Mild Inclusion</span>
-                      </div>
-                      <div class="flex items-center space-x-4">
-                        <div class="w-8 h-8 flex items-center justify-center bg-amber-300 text-gray-800 font-semibold rounded">3</div>
-                        <span class="text-gray-700">Strong Inclusion</span>
-                      </div>
+                <div class="flex mb-6">
+                    <div class="flex-1 pr-10">
+                        <h1 class="mt-10 text-pretty text-4xl font-semibold tracking-tight text-gray-900">
+                            What is this?</h1><br>
+                        <p>
+                            For 243 different areas that collectively make up the
+                            city of Vienna, Austria, <b>The Zuhause Project</b> offers deep insights into diversity and
+                            representation of each sub-community.
+                        </p><br>
+                        <p>
+                            The pie chart is an intuitive and digestible format to display the national makeup of each
+                            sub-district population, over time. We show change over time, with points at 1971, 1981, 1991, 2001, and 2011.
+                            The line chart displays the Austrian population percentage of each sub-region in
+                            Vienna, with the general trend that since 1971, the communities have become more diverse and
+                            less Austrian-concentrated. 
+                      
+                        </p><br>
+                        <p>
+                            The heatmap measures, on a 1-8 scale, three relevant metrics, over time: diversity ratings (dependent on host-population (ie Austrian) representation), country of birth, and nationality.
+                        </p>
+                        
                     </div>
-                    <p class="text-sm text-gray-500 mt-4">Host-population over-represented</p>
-                  </div>
-          
-                  <!-- Enclave Section -->
-                  <div class="mt-6">
-                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Enclave</h2>
-                    <div class="space-y-2">
-                      <div class="flex items-center space-x-4">
-                        <div class="w-8 h-8 flex items-center justify-center bg-green-500 text-white font-semibold rounded">4</div>
-                        <span class="text-gray-700">Pluralist</span>
-                      </div>
-                      <div class="flex items-center space-x-4">
-                        <div class="w-8 h-8 flex items-center justify-center bg-yellow-500 text-white font-semibold rounded">5</div>
-                        <span class="text-gray-700">Focused</span>
-                      </div>
-                      <div class="flex items-center space-x-4">
-                        <div class="w-8 h-8 flex items-center justify-center bg-yellow-300 text-gray-800 font-semibold rounded">6</div>
-                        <span class="text-gray-700">Rainbow</span>
-                      </div>
-                      <div class="flex items-center space-x-4">
-                        <div class="w-8 h-8 flex items-center justify-center bg-red-500 text-white font-semibold rounded">7</div>
-                        <span class="text-gray-700">Polarised</span>
-                      </div>
-                      <div class="flex items-center space-x-4">
-                        <div class="w-8 h-8 flex items-center justify-center bg-red-700 text-white font-semibold rounded">8</div>
-                        <span class="text-gray-700">Concentrated</span>
-                      </div>
-                    </div>
-                    <p class="text-sm text-gray-500 mt-4">Host-population under-represented</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          
-        
-          <!-- 1) Average Heatmap (FULL WIDTH, placed on top) -->
-          <div class="bg-gray-50 rounded-lg shadow p-4 mb-8 mt-4">
-            <label for="avgYearSelect" class="block mb-2 font-semibold">Highlight Year:</label>
-            <select id="avgYearSelect" class="border p-2 rounded mb-4">
-              <option value="1971">1971</option>
-              <option value="1981">1981</option>
-              <option value="1991">1991</option>
-              <option value="2001">2001</option>
-              <option value="2011">2011</option>
-            </select>
-            <div id="avgAllHeatmap" style="height: 300px;"></div>
-            <p class="text-xs text-gray-500 mt-2">
-                The average heatmap aggregates data across all individual maps, providing a holistic view of population distribution and representation. 
-            </p>
-          </div>
-        
-          <!-- 2) Three minimized heatmaps side by side -->
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <!-- cob10 -->
-            <div class="bg-gray-50 rounded-lg shadow p-2">
-              <h3 class="font-semibold text-sm mb-1 text-center">Country of Birth</h3>
-              <div id="cob10Heatmap" style="height: 300px;"></div>
-              <p class="text-xs text-gray-500 mt-6">
-                Diversity rating in {{ town_name }} based country of birth. 
-              </p>
-            </div>
-        
-            <!-- nat10 -->
-            <div class="bg-gray-50 rounded-lg shadow p-2">
-              <h3 class="font-semibold text-sm mb-1 text-center">Nationality</h3>
-              <div id="nat10Heatmap" style="height: 300px;"></div>
-              <p class="text-xs text-gray-500 mt-6">
-                Diversity rating in {{ town_name }} based on nationality.
-              </p>
-            </div>
-        
-            <!-- rel5 -->
-            <div class="bg-gray-50 rounded-lg shadow p-2">
-              <h3 class="font-semibold text-sm mb-1 text-center">Religion</h3>
-              <div id="rel5Heatmap" style="height: 300px;"></div>
-              <p class="text-xs text-gray-500 mt-6">
-                Diversity rating in {{ town_name }} based on religion.
-              </p>
-            </div>
-          </div>
-        </div>
-        <details class="mb-8">
-          
-            <summary class="cursor-pointer text-lg font-semibold mb-2">Raw Data </summary>
+                    <div class="flex-2">
+                        <div class="mt-6 px-2">
+                            <h2 class="text-xl font-semibold text-gray-800 mb-4">Host</h2>
+                            <div class="space-y-2">
+                                <div class="flex items-center space-x-4">
+                                    <div
+                                        class="w-8 h-8 flex items-center justify-center bg-amber-700 text-white font-semibold rounded">
+                                        1</div>
+                                    <span class="text-gray-700">Dominant</span>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <div
+                                        class="w-8 h-8 flex items-center justify-center bg-amber-500 text-white font-semibold rounded">
+                                        2</div>
+                                    <span class="text-gray-700">Mild Inclusion</span>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <div
+                                        class="w-8 h-8 flex items-center justify-center bg-amber-300 text-gray-800 font-semibold rounded">
+                                        3</div>
+                                    <span class="text-gray-700">Strong Inclusion</span>
+                                </div>
+                            </div>
+                            <p class="text-sm text-gray-500 mt-4">Host-population over-represented</p>
+                        </div>
             
-            <table class="table-auto border-collapse border border-gray-400 w-full text-left mt-4">
-                <thead>
-                    <tr>
-                        <th class="border border-gray-300 px-4 py-2">Property</th>
-                        <th class="border border-gray-300 px-4 py-2">Value</th>
-                    </tr>
-                </thead>
-                <tbody id="dataTableBody"></tbody>
-            </table>
-        </details>
+                    </div>
+                    <div class="mt-6">
+                        <h2 class="text-xl font-semibold text-gray-800 mb-4">Enclave</h2>
+                        <div class="space-y-2">
+                            <div class="flex items-center space-x-4">
+                                <div
+                                    class="w-8 h-8 flex items-center justify-center bg-green-500 text-white font-semibold rounded">
+                                    4</div>
+                                <span class="text-gray-700">Pluralist</span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div
+                                    class="w-8 h-8 flex items-center justify-center bg-yellow-500 text-white font-semibold rounded">
+                                    5</div>
+                                <span class="text-gray-700">Focused</span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div
+                                    class="w-8 h-8 flex items-center justify-center bg-yellow-300 text-gray-800 font-semibold rounded">
+                                    6</div>
+                                <span class="text-gray-700">Rainbow</span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div
+                                    class="w-8 h-8 flex items-center justify-center bg-red-500 text-white font-semibold rounded">
+                                    7</div>
+                                <span class="text-gray-700">Polarised</span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div
+                                    class="w-8 h-8 flex items-center justify-center bg-red-700 text-white font-semibold rounded">
+                                    8</div>
+                                <span class="text-gray-700">Concentrated</span>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-4">Host-population under-represented</p>
+                    </div>
+                    <div>
+
+                    </div>
+                </div>
 
 
-    <!-- MAIN SCRIPT -->
-    <script>
-        /*****************************************************************
-         * 1) Convert Python-Like String to JS Object
-         *****************************************************************/
-        function convertPythonStringToJSObject(pythonString) {
-            const jsonString = pythonString
-                .replace(/'/g, '"')         // Replace single quotes with double quotes
-                .replace(/(\w+):/g, '"$1":'); // Add quotes around unquoted keys
-            return JSON.parse(jsonString);
-        }
+                <!-- 1) Raw Data Table in a Details Dropdown -->
 
-        /*****************************************************************
-         * 2) On DOMContentLoaded => Fill Table, Set Up Charts, Heatmaps
-         *****************************************************************/
-        document.addEventListener('DOMContentLoaded', () => {
-            // Grab hidden data
-            const rawTownData = document.getElementById("town_data").innerText;
-            const rawTownName = document.getElementById("town_name").innerText;
 
-            // Convert to JS objects
-            const town_data = convertPythonStringToJSObject(rawTownData);
-            const town_name = rawTownName;
+                <!-- 2) Dual Charts (Pie Chart & Line Chart), side by side & same size -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 bg-white rounded-lg shadow p-4">
+                    <!-- (A) Pie Chart -->
+                    <div class="bg-gray-50 rounded-lg shadow-lg p-6 flex flex-col justify-between">
+                        <label for="yearSelect" class="block mb-0 font-semibold text-center">Nationalities in
+                            {{town_name}}</label>
+                        <select id="yearSelect" class="border p-2 rounded mb-4 mx-auto w-1/2">
+                            <!-- Adjusted width of the dropdown -->
+                            <option value="1971">1971</option>
+                            <option value="1981">1981</option>
+                            <option value="1991">1991</option>
+                            <option value="2001">2001</option>
+                            <option value="2011">2011</option>
+                        </select>
+                        <div class="w-full h-80 flex justify-center items-center">
+                            <!-- Increased height for the pie chart -->
+                            <canvas id="nationalitiesChart" class="w-full h-full"></canvas>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-4 text-center">
+                            This pie chart represents the distribution of nationalities across the population.
+                        </p>
+                    </div>
 
-            // (A) Build areaData for table
-            const areaData = {
-                area: town_name,
-                "census district": town_data["census district"],
-                cob10_2001: town_data["cob10_2001"],
-                cob10_2011: town_data["cob10_2011"],
-                nat10_1971: town_data["nat10_1971"],
-                nat10_1981: town_data["nat10_1981"],
-                nat10_1991: town_data["nat10_1991"],
-                nat10_2001: town_data["nat10_2001"],
-                nat10_2011: town_data["nat10_2011"],
-                rel5_1971: town_data["rel5_1971"],
-                rel5_1981: town_data["rel5_1981"],
-                rel5_1991: town_data["rel5_1991"],
-                rel5_2001: town_data["rel5_2001"],
-                rel5_2011e: town_data["rel5_2011e"],
-            };
+                    <!-- (B) Line Chart -->
+                    <div class="bg-gray-50 rounded-lg shadow-lg p-6 flex flex-col justify-between">
+                        <h2 class="font-semibold text-lg mb-0 text-center">Austrian Share of Population (1971–2011)</h2>
+                        <div class="w-full h-64 flex justify-center items-center">
+                            <!-- Standard size for the line chart -->
+                            <canvas id="austrianLineChart" class="w-full h-full"></canvas>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-4 text-center">
+                            This chart visualizes the proportion of Austrian-born individuals relative to other groups.
+                        </p>
+                    </div>
+                </div><!-- Container for Heatmaps -->
+                <div class="bg-white shadow rounded p-4 mb-8">
+                    <div class="flex justify-between items-center">
+                        <!-- Heatmaps Section -->
+                        <h2 class="text-xl font-bold">Heatmap of Diversity Ratings ({{ town_name }})</h2>
 
-            // (B) Build nat_data for nationalities
-            const nat_data = {
-                aut_1971: town_data["aut_1971"],
-                deu_1971: town_data["deu_1971"],
-                pol_1971: town_data["pol_1971"],
-                csk_1971: town_data["csk_1971"],
-                hun_1971: town_data["hun_1971"],
-                eu2_1971: town_data["eu2_1971"],
-                yug_1971: town_data["yug_1971"],
-                euc_1971: town_data["euc_1971"],
-                tur_1971: town_data["tur_1971"],
-                otc_1971: town_data["otc_1971"],
+                        <!-- Legend Section -->
+                        <div class="relative inline-block group">
+                            <!-- The button itself -->
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                Legend
+                            </button>
 
-                aut_1981: town_data["aut_1981"],
-                deu_1981: town_data["deu_1981"],
-                pol_1981: town_data["pol_1981"],
-                csk_1981: town_data["csk_1981"],
-                hun_1981: town_data["hun_1981"],
-                eu2_1981: town_data["eu2_1981"],
-                yug_1981: town_data["yug_1981"],
-                euc_1981: town_data["euc_1981"],
-                tur_1981: town_data["tur_1981"],
-                otc_1981: town_data["otc_1981"],
+                            <!-- The hidden legend content, revealed on hover -->
+                            <div
+                                class="absolute right-0 top-full mt-2 w-96 bg-white border border-gray-200 p-4 rounded shadow-md 
+                         invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300 z-10">
+                                <!-- Host Section -->
+                                <div>
+                                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Host</h2>
+                                    <div class="space-y-2">
+                                        <div class="flex items-center space-x-4">
+                                            <div
+                                                class="w-8 h-8 flex items-center justify-center bg-amber-700 text-white font-semibold rounded">
+                                                1</div>
+                                            <span class="text-gray-700">Dominant</span>
+                                        </div>
+                                        <div class="flex items-center space-x-4">
+                                            <div
+                                                class="w-8 h-8 flex items-center justify-center bg-amber-500 text-white font-semibold rounded">
+                                                2</div>
+                                            <span class="text-gray-700">Mild Inclusion</span>
+                                        </div>
+                                        <div class="flex items-center space-x-4">
+                                            <div
+                                                class="w-8 h-8 flex items-center justify-center bg-amber-300 text-gray-800 font-semibold rounded">
+                                                3</div>
+                                            <span class="text-gray-700">Strong Inclusion</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-sm text-gray-500 mt-4">Host-population over-represented</p>
+                                </div>
 
-                aut_1991: town_data["aut_1991"],
-                deu_1991: town_data["deu_1991"],
-                pol_1991: town_data["pol_1991"],
-                csk_1991: town_data["csk_1991"],
-                hun_1991: town_data["hun_1991"],
-                eu2_1991: town_data["eu2_1991"],
-                yug_1991: town_data["yug_1991"],
-                euc_1991: town_data["euc_1991"],
-                tur_1991: town_data["tur_1991"],
-                otc_1991: town_data["otc_1991"],
+                                <!-- Enclave Section -->
+                                <div class="mt-6">
+                                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Enclave</h2>
+                                    <div class="space-y-2">
+                                        <div class="flex items-center space-x-4">
+                                            <div
+                                                class="w-8 h-8 flex items-center justify-center bg-green-500 text-white font-semibold rounded">
+                                                4</div>
+                                            <span class="text-gray-700">Pluralist</span>
+                                        </div>
+                                        <div class="flex items-center space-x-4">
+                                            <div
+                                                class="w-8 h-8 flex items-center justify-center bg-yellow-500 text-white font-semibold rounded">
+                                                5</div>
+                                            <span class="text-gray-700">Focused</span>
+                                        </div>
+                                        <div class="flex items-center space-x-4">
+                                            <div
+                                                class="w-8 h-8 flex items-center justify-center bg-yellow-300 text-gray-800 font-semibold rounded">
+                                                6</div>
+                                            <span class="text-gray-700">Rainbow</span>
+                                        </div>
+                                        <div class="flex items-center space-x-4">
+                                            <div
+                                                class="w-8 h-8 flex items-center justify-center bg-red-500 text-white font-semibold rounded">
+                                                7</div>
+                                            <span class="text-gray-700">Polarised</span>
+                                        </div>
+                                        <div class="flex items-center space-x-4">
+                                            <div
+                                                class="w-8 h-8 flex items-center justify-center bg-red-700 text-white font-semibold rounded">
+                                                8</div>
+                                            <span class="text-gray-700">Concentrated</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-sm text-gray-500 mt-4">Host-population under-represented</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                aut_2001: town_data["aut_2001"],
-                deu_2001: town_data["deu_2001"],
-                pol_2001: town_data["pol_2001"],
-                csk_2001: town_data["csk_2001"],
-                hun_2001: town_data["hun_2001"],
-                eu2_2001: town_data["eu2_2001"],
-                yug_2001: town_data["yug_2001"],
-                euc_2001: town_data["euc_2001"],
-                tur_2001: town_data["tur_2001"],
-                otc_2001: town_data["otc_2001"],
 
-                aut_2011: town_data["aut_2011"],
-                deu_2011: town_data["deu_2011"],
-                pol_2011: town_data["pol_2011"],
-                csk_2011: town_data["csk_2011"],
-                hun_2011: town_data["hun_2011"],
-                eu2_2011: town_data["eu2_2011"],
-                yug_2011: town_data["yug_2011"],
-                euc_2011: town_data["euc_2011"],
-                tur_2011: town_data["tur_2011"],
-                otc_2011: town_data["otc_2011"],
-            };
 
-            /***************************************************************
-             * (C) Populate Table inside <details>
-             ***************************************************************/
-            const tableBody = document.getElementById('dataTableBody');
-            for (const [key, value] of Object.entries(areaData)) {
-                const row = document.createElement('tr');
-                row.innerHTML = `
+                    <!-- 1) Average Heatmap (FULL WIDTH, placed on top) -->
+                    <div class="bg-gray-50 rounded-lg shadow p-4 mb-8 mt-4">
+                        <label for="avgYearSelect" class="block mb-2 font-semibold">Highlight Year:</label>
+                        <select id="avgYearSelect" class="border p-2 rounded mb-4">
+                            <option value="1971">1971</option>
+                            <option value="1981">1981</option>
+                            <option value="1991">1991</option>
+                            <option value="2001">2001</option>
+                            <option value="2011">2011</option>
+                        </select>
+                        <div id="avgAllHeatmap" style="height: 300px;"></div>
+                        <p class="text-xs text-gray-500 mt-2">
+                            The average heatmap aggregates data across all individual maps, providing a holistic view of
+                            population distribution and representation.
+                        </p>
+                    </div>
+
+                    <!-- 2) Three minimized heatmaps side by side -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <!-- cob10 -->
+                        <div class="bg-gray-50 rounded-lg shadow p-2">
+                            <h3 class="font-semibold text-sm mb-1 text-center">Country of Birth</h3>
+                            <div id="cob10Heatmap" style="height: 300px;"></div>
+                            <p class="text-xs text-gray-500 mt-6">
+                                Diversity rating in {{ town_name }} based country of birth.
+                            </p>
+                        </div>
+
+                        <!-- nat10 -->
+                        <div class="bg-gray-50 rounded-lg shadow p-2">
+                            <h3 class="font-semibold text-sm mb-1 text-center">Nationality</h3>
+                            <div id="nat10Heatmap" style="height: 300px;"></div>
+                            <p class="text-xs text-gray-500 mt-6">
+                                Diversity rating in {{ town_name }} based on nationality.
+                            </p>
+                        </div>
+
+                        <!-- rel5 -->
+                        <div class="bg-gray-50 rounded-lg shadow p-2">
+                            <h3 class="font-semibold text-sm mb-1 text-center">Religion</h3>
+                            <div id="rel5Heatmap" style="height: 300px;"></div>
+                            <p class="text-xs text-gray-500 mt-6">
+                                Diversity rating in {{ town_name }} based on religion.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <details class="mb-8">
+
+                    <summary class="cursor-pointer text-lg font-semibold mb-2">Raw Data </summary>
+
+                    <table class="table-auto border-collapse border border-gray-400 w-full text-left mt-4">
+                        <thead>
+                            <tr>
+                                <th class="border border-gray-300 px-4 py-2">Property</th>
+                                <th class="border border-gray-300 px-4 py-2">Value</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dataTableBody"></tbody>
+                    </table>
+                </details>
+
+
+                <!-- MAIN SCRIPT -->
+                <script>
+                    /*****************************************************************
+                     * 1) Convert Python-Like String to JS Object
+                     *****************************************************************/
+                    function convertPythonStringToJSObject(pythonString) {
+                        const jsonString = pythonString
+                            .replace(/'/g, '"')         // Replace single quotes with double quotes
+                            .replace(/(\w+):/g, '"$1":'); // Add quotes around unquoted keys
+                        return JSON.parse(jsonString);
+                    }
+
+                    /*****************************************************************
+                     * 2) On DOMContentLoaded => Fill Table, Set Up Charts, Heatmaps
+                     *****************************************************************/
+                    document.addEventListener('DOMContentLoaded', () => {
+                        // Grab hidden data
+                        const rawTownData = document.getElementById("town_data").innerText;
+                        const rawTownName = document.getElementById("town_name").innerText;
+
+                        // Convert to JS objects
+                        const town_data = convertPythonStringToJSObject(rawTownData);
+                        const town_name = rawTownName;
+
+                        // (A) Build areaData for table
+                        const areaData = {
+                            area: town_name,
+                            "census district": town_data["census district"],
+                            cob10_2001: town_data["cob10_2001"],
+                            cob10_2011: town_data["cob10_2011"],
+                            nat10_1971: town_data["nat10_1971"],
+                            nat10_1981: town_data["nat10_1981"],
+                            nat10_1991: town_data["nat10_1991"],
+                            nat10_2001: town_data["nat10_2001"],
+                            nat10_2011: town_data["nat10_2011"],
+                            rel5_1971: town_data["rel5_1971"],
+                            rel5_1981: town_data["rel5_1981"],
+                            rel5_1991: town_data["rel5_1991"],
+                            rel5_2001: town_data["rel5_2001"],
+                            rel5_2011e: town_data["rel5_2011e"],
+                        };
+
+                        // (B) Build nat_data for nationalities
+                        const nat_data = {
+                            aut_1971: town_data["aut_1971"],
+                            deu_1971: town_data["deu_1971"],
+                            pol_1971: town_data["pol_1971"],
+                            csk_1971: town_data["csk_1971"],
+                            hun_1971: town_data["hun_1971"],
+                            eu2_1971: town_data["eu2_1971"],
+                            yug_1971: town_data["yug_1971"],
+                            euc_1971: town_data["euc_1971"],
+                            tur_1971: town_data["tur_1971"],
+                            otc_1971: town_data["otc_1971"],
+
+                            aut_1981: town_data["aut_1981"],
+                            deu_1981: town_data["deu_1981"],
+                            pol_1981: town_data["pol_1981"],
+                            csk_1981: town_data["csk_1981"],
+                            hun_1981: town_data["hun_1981"],
+                            eu2_1981: town_data["eu2_1981"],
+                            yug_1981: town_data["yug_1981"],
+                            euc_1981: town_data["euc_1981"],
+                            tur_1981: town_data["tur_1981"],
+                            otc_1981: town_data["otc_1981"],
+
+                            aut_1991: town_data["aut_1991"],
+                            deu_1991: town_data["deu_1991"],
+                            pol_1991: town_data["pol_1991"],
+                            csk_1991: town_data["csk_1991"],
+                            hun_1991: town_data["hun_1991"],
+                            eu2_1991: town_data["eu2_1991"],
+                            yug_1991: town_data["yug_1991"],
+                            euc_1991: town_data["euc_1991"],
+                            tur_1991: town_data["tur_1991"],
+                            otc_1991: town_data["otc_1991"],
+
+                            aut_2001: town_data["aut_2001"],
+                            deu_2001: town_data["deu_2001"],
+                            pol_2001: town_data["pol_2001"],
+                            csk_2001: town_data["csk_2001"],
+                            hun_2001: town_data["hun_2001"],
+                            eu2_2001: town_data["eu2_2001"],
+                            yug_2001: town_data["yug_2001"],
+                            euc_2001: town_data["euc_2001"],
+                            tur_2001: town_data["tur_2001"],
+                            otc_2001: town_data["otc_2001"],
+
+                            aut_2011: town_data["aut_2011"],
+                            deu_2011: town_data["deu_2011"],
+                            pol_2011: town_data["pol_2011"],
+                            csk_2011: town_data["csk_2011"],
+                            hun_2011: town_data["hun_2011"],
+                            eu2_2011: town_data["eu2_2011"],
+                            yug_2011: town_data["yug_2011"],
+                            euc_2011: town_data["euc_2011"],
+                            tur_2011: town_data["tur_2011"],
+                            otc_2011: town_data["otc_2011"],
+                        };
+
+                        /***************************************************************
+                         * (C) Populate Table inside <details>
+                         ***************************************************************/
+                        const tableBody = document.getElementById('dataTableBody');
+                        for (const [key, value] of Object.entries(areaData)) {
+                            const row = document.createElement('tr');
+                            row.innerHTML = `
           <td class="border border-gray-300 px-4 py-2 font-semibold">${key}</td>
           <td class="border border-gray-300 px-4 py-2">${value}</td>
         `;
-                tableBody.appendChild(row);
-            }
-
-            /***************************************************************
-             * (D) Chart.js: Pie Chart + Line Chart
-             ***************************************************************/
-            // Helper => get data for a single year => {AUT: X, DEU: Y, ...}
-            function getDataForYear(year) {
-                return Object.keys(nat_data)
-                    .filter(k => k.endsWith(`_${year}`))
-                    .reduce((acc, k) => {
-                        const label = k.replace(`_${year}`, '').toUpperCase();
-                        acc[label] = nat_data[k];
-                        return acc;
-                    }, {});
-            }
-
-            // 1) Pie Chart
-            let pieChartInstance = null;
-            function renderPieChart(year) {
-                const yearData = getDataForYear(year);
-                const ctx = document.getElementById('nationalitiesChart').getContext('2d');
-
-                const labels = Object.keys(yearData);
-                const values = labels.map(l => yearData[l]);
-
-                if (pieChartInstance) {
-                    pieChartInstance.destroy();
-                }
-
-                pieChartInstance = new Chart(ctx, {
-                    type: 'pie',
-                    data: {
-                        labels,
-                        datasets: [{
-                            data: values,
-                            backgroundColor: [
-                                "#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#9966FF",
-                                "#FF9F40", "#C9CBCF", "#FF5733", "#33FF57", "#3375FF"
-                            ]
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        plugins: {
-                            legend: {
-                                position: 'left', // moved the legend to the left side
-                            },
-                            title: {
-                                display: true,
-                            }
+                            tableBody.appendChild(row);
                         }
-                    }
-                });
-            }
 
-            // 2) Line Chart (Austrian share over time)
-            let lineChartInstance = null;
-            function renderLineChart() {
-                const years = ["1971", "1981", "1991", "2001", "2011"];
-                const austrianShareValues = [];
-
-                years.forEach(year => {
-                    const dataYear = getDataForYear(year);
-                    let total = 0;
-                    let autCount = 0;
-                    Object.entries(dataYear).forEach(([label, val]) => {
-                        const numericVal = parseFloat(val);
-                        if (!isNaN(numericVal)) {
-                            total += numericVal;
-                            if (label === "AUT") {
-                                autCount = numericVal;
-                            }
+                        /***************************************************************
+                         * (D) Chart.js: Pie Chart + Line Chart
+                         ***************************************************************/
+                        // Helper => get data for a single year => {AUT: X, DEU: Y, ...}
+                        function getDataForYear(year) {
+                            return Object.keys(nat_data)
+                                .filter(k => k.endsWith(`_${year}`))
+                                .reduce((acc, k) => {
+                                    const label = k.replace(`_${year}`, '').toUpperCase();
+                                    acc[label] = nat_data[k];
+                                    return acc;
+                                }, {});
                         }
-                    });
-                    const percent = total > 0 ? (autCount / total) * 100 : 0;
-                    austrianShareValues.push(parseFloat(percent.toFixed(2)));
-                });
 
-                const ctx = document.getElementById('austrianLineChart').getContext('2d');
-                if (lineChartInstance) {
-                    lineChartInstance.destroy();
-                }
+                        // 1) Pie Chart
+                        let pieChartInstance = null;
+                        function renderPieChart(year) {
+                            const yearData = getDataForYear(year);
+                            const ctx = document.getElementById('nationalitiesChart').getContext('2d');
 
-                lineChartInstance = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: years,
-                        datasets: [{
-                            label: "Austrian % of {{ town_name }}'s Population",
-                            data: austrianShareValues,
-                            borderColor: '#FF6384',
-                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                            fill: true,
-                            tension: 0.2
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        plugins: {
-                            legend: { position: 'top' },
-                            title: {
-                                display: true,
+                            const labels = Object.keys(yearData);
+                            const values = labels.map(l => yearData[l]);
+
+                            if (pieChartInstance) {
+                                pieChartInstance.destroy();
                             }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                max: 100,
-                                title: {
-                                    display: true,
-                                    text: '% of Total Population'
+
+                            pieChartInstance = new Chart(ctx, {
+                                type: 'pie',
+                                data: {
+                                    labels,
+                                    datasets: [{
+                                        data: values,
+                                        backgroundColor: [
+                                            "#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#9966FF",
+                                            "#FF9F40", "#C9CBCF", "#FF5733", "#33FF57", "#3375FF"
+                                        ]
+                                    }]
+                                },
+                                options: {
+                                    responsive: true,
+                                    plugins: {
+                                        legend: {
+                                            position: 'left', // moved the legend to the left side
+                                        },
+                                        title: {
+                                            display: true,
+                                        }
+                                    }
                                 }
-                            }
+                            });
                         }
-                    }
-                });
-            }
 
-            // Initialize with default year for Pie Chart
-            document.getElementById('yearSelect').addEventListener('change', e => {
-                renderPieChart(e.target.value);
-            });
-            renderPieChart("1971");
-            renderLineChart();
+                        // 2) Line Chart (Austrian share over time)
+                        let lineChartInstance = null;
+                        function renderLineChart() {
+                            const years = ["1971", "1981", "1991", "2001", "2011"];
+                            const austrianShareValues = [];
+
+                            years.forEach(year => {
+                                const dataYear = getDataForYear(year);
+                                let total = 0;
+                                let autCount = 0;
+                                Object.entries(dataYear).forEach(([label, val]) => {
+                                    const numericVal = parseFloat(val);
+                                    if (!isNaN(numericVal)) {
+                                        total += numericVal;
+                                        if (label === "AUT") {
+                                            autCount = numericVal;
+                                        }
+                                    }
+                                });
+                                const percent = total > 0 ? (autCount / total) * 100 : 0;
+                                austrianShareValues.push(parseFloat(percent.toFixed(2)));
+                            });
+
+                            const ctx = document.getElementById('austrianLineChart').getContext('2d');
+                            if (lineChartInstance) {
+                                lineChartInstance.destroy();
+                            }
+
+                            lineChartInstance = new Chart(ctx, {
+                                type: 'line',
+                                data: {
+                                    labels: years,
+                                    datasets: [{
+                                        label: "Austrian % of {{ town_name }}'s Population",
+                                        data: austrianShareValues,
+                                        borderColor: '#FF6384',
+                                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                        fill: true,
+                                        tension: 0.2
+                                    }]
+                                },
+                                options: {
+                                    responsive: true,
+                                    plugins: {
+                                        legend: { position: 'top' },
+                                        title: {
+                                            display: true,
+                                        }
+                                    },
+                                    scales: {
+                                        y: {
+                                            beginAtZero: true,
+                                            max: 100,
+                                            title: {
+                                                display: true,
+                                                text: '% of Total Population'
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                        }
+
+                        // Initialize with default year for Pie Chart
+                        document.getElementById('yearSelect').addEventListener('change', e => {
+                            renderPieChart(e.target.value);
+                        });
+                        renderPieChart("1971");
+                        renderLineChart();
 
 
-            /***************************************************************
-             * (E) ECharts Heatmaps
-             ***************************************************************/
-            // 1) Legend mapping for hover tooltips
-            const legendMapping = {
-                1: 'Dominant',
-                2: 'Mild Inclusion',
-                3: 'Strong Inclusion',
-                4: 'Pluralist',
-                5: 'Focused',
-                6: 'Rainbow',
-                7: 'Polarised',
-                8: 'Concentrated'
-            };
+                        /***************************************************************
+                         * (E) ECharts Heatmaps
+                         ***************************************************************/
+                        // 1) Legend mapping for hover tooltips
+                        const legendMapping = {
+                            1: 'Dominant',
+                            2: 'Mild Inclusion',
+                            3: 'Strong Inclusion',
+                            4: 'Pluralist',
+                            5: 'Focused',
+                            6: 'Rainbow',
+                            7: 'Polarised',
+                            8: 'Concentrated'
+                        };
 
-            function mapValueToLegendLabel(val) {
-                if (val < 1 || val > 8) {
-                    return 'No matching label';
-                }
-                if (Number.isInteger(val)) {
-                    return legendMapping[val] || 'No matching label';
-                }
-                // If decimal => combine floor & ceil
-                const lower = Math.floor(val);
-                const upper = Math.ceil(val);
-                if (lower < 1 || upper > 8) {
-                    return 'No matching label';
-                }
-                return `${legendMapping[lower]} - ${legendMapping[upper]}`;
-            }
+                        function mapValueToLegendLabel(val) {
+                            if (val < 1 || val > 8) {
+                                return 'No matching label';
+                            }
+                            if (Number.isInteger(val)) {
+                                return legendMapping[val] || 'No matching label';
+                            }
+                            // If decimal => combine floor & ceil
+                            const lower = Math.floor(val);
+                            const upper = Math.ceil(val);
+                            if (lower < 1 || upper > 8) {
+                                return 'No matching label';
+                            }
+                            return `${legendMapping[lower]} - ${legendMapping[upper]}`;
+                        }
 
-            // 2) Single-row heatmap factory
-            function createHeatmapOption(xAxisData, heatmapData, title) {
-                return {
-                    tooltip: {
-                        position: 'top',
-                        formatter: (params) => {
-                            const rawValue = params.value[2];
-                            const label = mapValueToLegendLabel(rawValue);
-                            const yearIndex = params.value[0];
-                            const yearName = xAxisData[yearIndex] || '';
-                            return `
+                        // 2) Single-row heatmap factory
+                        function createHeatmapOption(xAxisData, heatmapData, title) {
+                            return {
+                                tooltip: {
+                                    position: 'top',
+                                    formatter: (params) => {
+                                        const rawValue = params.value[2];
+                                        const label = mapValueToLegendLabel(rawValue);
+                                        const yearIndex = params.value[0];
+                                        const yearName = xAxisData[yearIndex] || '';
+                                        return `
                 <strong>${title} - ${yearName}</strong><br/>
                 Value: ${rawValue}<br/>
                 Legend: ${label}
               `;
+                                    }
+                                },
+                                grid: {
+                                    height: '60%',
+                                    top: '10%'
+                                },
+                                xAxis: {
+                                    type: 'category',
+                                    data: xAxisData,
+                                    splitArea: { show: true }
+                                },
+                                yAxis: {
+                                    type: 'category',
+                                    data: [title], // single row
+                                    splitArea: { show: true }
+                                },
+                                visualMap: {
+                                    min: 1,
+                                    max: 8,
+                                    calculable: true,
+                                    orient: 'horizontal',
+                                    left: 'center',
+                                    bottom: '0'
+                                },
+                                series: [{
+                                    name: title,
+                                    type: 'heatmap',
+                                    data: heatmapData,
+                                    label: { show: true },
+                                    emphasis: {
+                                        itemStyle: {
+                                            shadowBlur: 10,
+                                            shadowColor: 'rgba(0,0,0,0.5)'
+                                        }
+                                    }
+                                }]
+                            };
                         }
-                    },
-                    grid: {
-                        height: '60%',
-                        top: '10%'
-                    },
-                    xAxis: {
-                        type: 'category',
-                        data: xAxisData,
-                        splitArea: { show: true }
-                    },
-                    yAxis: {
-                        type: 'category',
-                        data: [title], // single row
-                        splitArea: { show: true }
-                    },
-                    visualMap: {
-                        min: 1,
-                        max: 8,
-                        calculable: true,
-                        orient: 'horizontal',
-                        left: 'center',
-                        bottom: '0'
-                    },
-                    series: [{
-                        name: title,
-                        type: 'heatmap',
-                        data: heatmapData,
-                        label: { show: true },
-                        emphasis: {
-                            itemStyle: {
-                                shadowBlur: 10,
-                                shadowColor: 'rgba(0,0,0,0.5)'
-                            }
-                        }
-                    }]
-                };
-            }
 
-            // (a) Data from areaData
-            // cob10 => 2001, 2011
-            const cob10Years = ["2001", "2011"];
-            const cob10Data = [
-                [0, 0, parseFloat(areaData.cob10_2001)],
-                [1, 0, parseFloat(areaData.cob10_2011)]
-            ];
+                        // (a) Data from areaData
+                        // cob10 => 2001, 2011
+                        const cob10Years = ["2001", "2011"];
+                        const cob10Data = [
+                            [0, 0, parseFloat(areaData.cob10_2001)],
+                            [1, 0, parseFloat(areaData.cob10_2011)]
+                        ];
 
-            // nat10 => 1971..2011
-            const nat10Years = ["1971", "1981", "1991", "2001", "2011"];
-            const nat10Data = [
-                [0, 0, parseFloat(areaData.nat10_1971)],
-                [1, 0, parseFloat(areaData.nat10_1981)],
-                [2, 0, parseFloat(areaData.nat10_1991)],
-                [3, 0, parseFloat(areaData.nat10_2001)],
-                [4, 0, parseFloat(areaData.nat10_2011)]
-            ];
+                        // nat10 => 1971..2011
+                        const nat10Years = ["1971", "1981", "1991", "2001", "2011"];
+                        const nat10Data = [
+                            [0, 0, parseFloat(areaData.nat10_1971)],
+                            [1, 0, parseFloat(areaData.nat10_1981)],
+                            [2, 0, parseFloat(areaData.nat10_1991)],
+                            [3, 0, parseFloat(areaData.nat10_2001)],
+                            [4, 0, parseFloat(areaData.nat10_2011)]
+                        ];
 
-            // rel5 => 1971..2011
-            const rel5Years = ["1971", "1981", "1991", "2001", "2011"];
-            const rel5_2011_val = parseFloat(areaData.rel5_2011e);
-            const rel5Data = [
-                [0, 0, parseFloat(areaData.rel5_1971)],
-                [1, 0, parseFloat(areaData.rel5_1981)],
-                [2, 0, parseFloat(areaData.rel5_1991)],
-                [3, 0, parseFloat(areaData.rel5_2001)],
-                [4, 0, rel5_2011_val]
-            ];
+                        // rel5 => 1971..2011
+                        const rel5Years = ["1971", "1981", "1991", "2001", "2011"];
+                        const rel5_2011_val = parseFloat(areaData.rel5_2011e);
+                        const rel5Data = [
+                            [0, 0, parseFloat(areaData.rel5_1971)],
+                            [1, 0, parseFloat(areaData.rel5_1981)],
+                            [2, 0, parseFloat(areaData.rel5_1991)],
+                            [3, 0, parseFloat(areaData.rel5_2001)],
+                            [4, 0, rel5_2011_val]
+                        ];
 
-            // Render the 3 minimized heatmaps
-            const chartCob10 = echarts.init(document.getElementById('cob10Heatmap'));
-            chartCob10.setOption(createHeatmapOption(cob10Years, cob10Data, ''));
+                        // Render the 3 minimized heatmaps
+                        const chartCob10 = echarts.init(document.getElementById('cob10Heatmap'));
+                        chartCob10.setOption(createHeatmapOption(cob10Years, cob10Data, ''));
 
-            const chartNat10 = echarts.init(document.getElementById('nat10Heatmap'));
-            chartNat10.setOption(createHeatmapOption(nat10Years, nat10Data, ''));
+                        const chartNat10 = echarts.init(document.getElementById('nat10Heatmap'));
+                        chartNat10.setOption(createHeatmapOption(nat10Years, nat10Data, ''));
 
-            const chartRel5 = echarts.init(document.getElementById('rel5Heatmap'));
-            chartRel5.setOption(createHeatmapOption(rel5Years, rel5Data, ''));
+                        const chartRel5 = echarts.init(document.getElementById('rel5Heatmap'));
+                        chartRel5.setOption(createHeatmapOption(rel5Years, rel5Data, ''));
 
-            // (b) Average Heatmap
-            const allYears = ["1971", "1981", "1991", "2001", "2011"];
-            const cob10Map = { "2001": parseFloat(areaData.cob10_2001), "2011": parseFloat(areaData.cob10_2011) };
-            const nat10Map = {
-                "1971": parseFloat(areaData.nat10_1971),
-                "1981": parseFloat(areaData.nat10_1981),
-                "1991": parseFloat(areaData.nat10_1991),
-                "2001": parseFloat(areaData.nat10_2001),
-                "2011": parseFloat(areaData.nat10_2011)
-            };
-            const rel5Map = {
-                "1971": parseFloat(areaData.rel5_1971),
-                "1981": parseFloat(areaData.rel5_1981),
-                "1991": parseFloat(areaData.rel5_1991),
-                "2001": parseFloat(areaData.rel5_2001),
-                "2011": rel5_2011_val
-            };
-
-            function getAverageForYear(year) {
-                const vals = [];
-                if (!isNaN(cob10Map[year])) vals.push(cob10Map[year]);
-                if (!isNaN(nat10Map[year])) vals.push(nat10Map[year]);
-                if (!isNaN(rel5Map[year])) vals.push(rel5Map[year]);
-                if (!vals.length) return 0;
-                const sum = vals.reduce((a, c) => a + c, 0);
-                return parseFloat((sum / vals.length).toFixed(2));
-            }
-
-            function buildAvgAllData(selectedYear) {
-                return allYears.map((yr, i) => {
-                    const val = getAverageForYear(yr);
-                    if (yr === selectedYear) {
-                        return {
-                            value: [i, 0, val],
-                            itemStyle: {
-                                borderColor: '#000',
-                                borderWidth: 2
-                            }
+                        // (b) Average Heatmap
+                        const allYears = ["1971", "1981", "1991", "2001", "2011"];
+                        const cob10Map = { "2001": parseFloat(areaData.cob10_2001), "2011": parseFloat(areaData.cob10_2011) };
+                        const nat10Map = {
+                            "1971": parseFloat(areaData.nat10_1971),
+                            "1981": parseFloat(areaData.nat10_1981),
+                            "1991": parseFloat(areaData.nat10_1991),
+                            "2001": parseFloat(areaData.nat10_2001),
+                            "2011": parseFloat(areaData.nat10_2011)
                         };
-                    }
-                    return { value: [i, 0, val] };
-                });
-            }
+                        const rel5Map = {
+                            "1971": parseFloat(areaData.rel5_1971),
+                            "1981": parseFloat(areaData.rel5_1981),
+                            "1991": parseFloat(areaData.rel5_1991),
+                            "2001": parseFloat(areaData.rel5_2001),
+                            "2011": rel5_2011_val
+                        };
 
-            const avgHeatmap = echarts.init(document.getElementById('avgAllHeatmap'));
-            const avgOption = {
-                tooltip: {
-                    position: 'top',
-                    formatter: (params) => {
-                        const val = params.value[2];
-                        const yearIndex = params.value[0];
-                        const yearName = allYears[yearIndex];
-                        const label = mapValueToLegendLabel(val);
-                        return `
+                        function getAverageForYear(year) {
+                            const vals = [];
+                            if (!isNaN(cob10Map[year])) vals.push(cob10Map[year]);
+                            if (!isNaN(nat10Map[year])) vals.push(nat10Map[year]);
+                            if (!isNaN(rel5Map[year])) vals.push(rel5Map[year]);
+                            if (!vals.length) return 0;
+                            const sum = vals.reduce((a, c) => a + c, 0);
+                            return parseFloat((sum / vals.length).toFixed(2));
+                        }
+
+                        function buildAvgAllData(selectedYear) {
+                            return allYears.map((yr, i) => {
+                                const val = getAverageForYear(yr);
+                                if (yr === selectedYear) {
+                                    return {
+                                        value: [i, 0, val],
+                                        itemStyle: {
+                                            borderColor: '#000',
+                                            borderWidth: 2
+                                        }
+                                    };
+                                }
+                                return { value: [i, 0, val] };
+                            });
+                        }
+
+                        const avgHeatmap = echarts.init(document.getElementById('avgAllHeatmap'));
+                        const avgOption = {
+                            tooltip: {
+                                position: 'top',
+                                formatter: (params) => {
+                                    const val = params.value[2];
+                                    const yearIndex = params.value[0];
+                                    const yearName = allYears[yearIndex];
+                                    const label = mapValueToLegendLabel(val);
+                                    return `
               <strong>avgAll - ${yearName}</strong><br/>
               Value: ${val}<br/>
               Legend: ${label}
             `;
-                    }
-                },
-                grid: {
-                    height: '60%',
-                    top: '10%'
-                },
-                xAxis: {
-                    type: 'category',
-                    data: allYears,
-                    splitArea: { show: true }
-                },
-                yAxis: {
-                    type: 'category',
-                    data: ['avgAll'],
-                    splitArea: { show: true }
-                },
-                visualMap: {
-                    min: 1,
-                    max: 8,
-                    calculable: true,
-                    orient: 'horizontal',
-                    left: 'center',
-                    bottom: '0'
-                },
-                series: [{
-                    name: 'avgAll',
-                    type: 'heatmap',
-                    data: buildAvgAllData(null),
-                    label: { show: true },
-                    emphasis: {
-                        itemStyle: {
-                            shadowBlur: 10,
-                            shadowColor: 'rgba(0, 0, 0, 0.5)'
-                        }
-                    }
-                }]
-            };
-            avgHeatmap.setOption(avgOption);
+                                }
+                            },
+                            grid: {
+                                height: '60%',
+                                top: '10%'
+                            },
+                            xAxis: {
+                                type: 'category',
+                                data: allYears,
+                                splitArea: { show: true }
+                            },
+                            yAxis: {
+                                type: 'category',
+                                data: ['avgAll'],
+                                splitArea: { show: true }
+                            },
+                            visualMap: {
+                                min: 1,
+                                max: 8,
+                                calculable: true,
+                                orient: 'horizontal',
+                                left: 'center',
+                                bottom: '0'
+                            },
+                            series: [{
+                                name: 'avgAll',
+                                type: 'heatmap',
+                                data: buildAvgAllData(null),
+                                label: { show: true },
+                                emphasis: {
+                                    itemStyle: {
+                                        shadowBlur: 10,
+                                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                    }
+                                }
+                            }]
+                        };
+                        avgHeatmap.setOption(avgOption);
 
-            // Listen for highlight changes
-            document.getElementById('avgYearSelect').addEventListener('change', e => {
-                const selYear = e.target.value;
-                avgHeatmap.setOption({
-                    series: [{ data: buildAvgAllData(selYear) }]
-                });
-            });
-        });
-    </script>
-</body>
-<footer class="border-t border-gray-200 mt-8 pt-4 text-center text-sm text-gray-500">
-    <div class="flex justify-center space-x-4">
-      <span>&copy; 2024 Zuhause Project</span>
-      <a href="https://www.wirel-project.at/maps/#religion/catholics/2011/48.22035/16.37965/11" class="hover:underline">Source</a>
-      <a href="https://www.codeitforwardny.org/" class="hover:underline">Code it Forward</a>
-    </div>
-  </footer>
+                        // Listen for highlight changes
+                        document.getElementById('avgYearSelect').addEventListener('change', e => {
+                            const selYear = e.target.value;
+                            avgHeatmap.setOption({
+                                series: [{ data: buildAvgAllData(selYear) }]
+                            });
+                        });
+                    });
+                </script>
+            </body>
+            <footer class="border-t border-gray-200 mt-8 pt-4 text-center text-sm text-gray-500">
+                <div class="flex justify-center space-x-4">
+                    <span>&copy; 2024 Zuhause Project</span>
+                    <a href="https://www.wirel-project.at/maps/#religion/catholics/2011/48.22035/16.37965/11"
+                        class="hover:underline">Source</a>
+                    <a href="https://www.codeitforwardny.org/" class="hover:underline">Code it Forward</a>
+                </div>
+            </footer>
 
-</html>
+            </html>

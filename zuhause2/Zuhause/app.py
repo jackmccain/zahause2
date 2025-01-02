@@ -14,6 +14,10 @@ def home():
 def policies():
     return render_template('policies.html')
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 @app.route('/card')
 def card():
     return render_template('card.html')
